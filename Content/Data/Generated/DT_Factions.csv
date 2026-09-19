@@ -1,0 +1,11 @@
+Name,Faction,DisplayName,DoctrineName,Lore,BonusAttribute,BonusPercent,PenaltyAttribute,PenaltyPercent,FrameColor
+Dragonkind,Dragonkind,Dragonkind,Wyrmskin,Elders of the sky-hoards; they remember every war and forgive none of them.,Power,8,Speed,-6,#B4361F
+ArcaneOrders,ArcaneOrders,Arcane Orders,Spellshift,"Colleges, covens and familiars. Time bends around a wizard who has outlived their own school.",Age,18,Power,-3,#4C6FD1
+OrderOfTheBlade,OrderOfTheBlade,Order of the Blade,Oathbound,Knightly houses bound by sworn oaths; the oath outlives the knight and keeps their banners moving.,Speed,6,Height,-4,#C9A227
+Ironhold,Ironhold,Ironhold,Deepforged,"Dwarven holds and their forge-titans. Slow, immovable, offended.",Height,13,Speed,-4,#7C6A4E
+FeyCourt,FeyCourt,Fey Court,Feylight,"The Gentry: beautiful, contractual, and always counting the favours you owe.",Speed,8,Power,-6,#3FA36B
+UndyingLegion,UndyingLegion,Undying Legion,Deathless,"Liches, wights and bone-choirs. Nobody out-ages a corpse that stopped keeping score.",Age,30,Speed,-2,#6B7A8F
+AbyssalHorde,AbyssalHorde,Abyssal Horde,Hellmark,Contract demons and their beasts. Every one of them is late for something awful.,Power,7,Age,-10,#8A1F3C
+CelestialHost,CelestialHost,Celestial Host,Ascendant,"Seraphs, colossi and elementals of the upper spheres - tall orders, tall statues.",Height,8,Power,-4,#D9C77A
+Beastwild,Beastwild,Beastwild,Untamed,"Orcs, goblins, werewolves and everything the frontier names with a shout.",Speed,9,Height,-7,#5A7D3A
+DeepwaterCourt,DeepwaterCourt,Deepwater Court,Tidebound,"Leviathans, merrow and drowned kings. The pressure down there keeps things young and very, very old.",Age,9,Power,-4,#2C7C93

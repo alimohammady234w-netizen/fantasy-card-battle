@@ -1,0 +1,4277 @@
+{
+ "schema": "fantasy-card-battle/cards@1",
+ "counts": {
+  "cards": 110,
+  "factions": 10,
+  "abilities": 24
+ },
+ "ties": {
+  "age": {
+   "pairs": 5995,
+   "ties": 14,
+   "pct": 0.234
+  },
+  "power": {
+   "pairs": 5995,
+   "ties": 67,
+   "pct": 1.118
+  },
+  "speed": {
+   "pairs": 5995,
+   "ties": 91,
+   "pct": 1.518
+  },
+  "height": {
+   "pairs": 5995,
+   "ties": 20,
+   "pct": 0.334
+  }
+ },
+ "cards": [
+  {
+   "id": "FCB_Ancient_Red_Wyrm",
+   "name": "Ancient Red Wyrm",
+   "faction": "Dragonkind",
+   "rarity": "Mythic",
+   "archetype": "elder",
+   "base": {
+    "age": 11000,
+    "power": 108,
+    "speed": 46,
+    "height": 2600
+   },
+   "effective": {
+    "age": 11000,
+    "power": 117,
+    "speed": 42,
+    "height": 2600
+   },
+   "strength": 0.7821,
+   "flavor": "She has slept on the same mountain of gold for nine thousand years.",
+   "set_index": 1,
+   "lore": 1,
+   "abilities": [
+    {
+     "id": "EmberFury",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Ember Fury",
+     "desc": "When Power is contested, add +9."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Cinderwing_Hatchling",
+   "name": "Cinderwing Hatchling",
+   "faction": "Dragonkind",
+   "rarity": "Common",
+   "archetype": "beast",
+   "base": {
+    "age": 70,
+    "power": 24,
+    "speed": 71,
+    "height": 95
+   },
+   "effective": {
+    "age": 70,
+    "power": 26,
+    "speed": 66,
+    "height": 95
+   },
+   "strength": 0.2271,
+   "flavor": "Angry, winged, and already counting your sheep.",
+   "set_index": 2,
+   "lore": 2,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Bog_Green_Drake",
+   "name": "Bog Green Drake",
+   "faction": "Dragonkind",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 44,
+    "power": 57,
+    "speed": 36,
+    "height": 340
+   },
+   "effective": {
+    "age": 44,
+    "power": 62,
+    "speed": 33,
+    "height": 340
+   },
+   "strength": 0.3349,
+   "flavor": "Half swamp, half appetite.",
+   "set_index": 3,
+   "lore": 3,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Frostfang_Wyrm",
+   "name": "Frostfang Wyrm",
+   "faction": "Dragonkind",
+   "rarity": "Uncommon",
+   "archetype": "brute",
+   "base": {
+    "age": 320,
+    "power": 72,
+    "speed": 40,
+    "height": 520
+   },
+   "effective": {
+    "age": 320,
+    "power": 78,
+    "speed": 37,
+    "height": 520
+   },
+   "strength": 0.5573,
+   "flavor": "It freezes the lake, then sleeps on the ice.",
+   "set_index": 4,
+   "lore": 4,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Stormclad_Wyvern",
+   "name": "Stormclad Wyvern",
+   "faction": "Dragonkind",
+   "rarity": "Uncommon",
+   "archetype": "swift",
+   "base": {
+    "age": 67,
+    "power": 52,
+    "speed": 79,
+    "height": 167
+   },
+   "effective": {
+    "age": 67,
+    "power": 56,
+    "speed": 73,
+    "height": 167
+   },
+   "strength": 0.3188,
+   "flavor": "Rides the front of every squall the coast fears.",
+   "set_index": 5,
+   "lore": 5,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Mud_Maw_Whelp",
+   "name": "Mud-Maw Whelp",
+   "faction": "Dragonkind",
+   "rarity": "Common",
+   "archetype": "vermin",
+   "base": {
+    "age": 95,
+    "power": 26,
+    "speed": 64,
+    "height": 94
+   },
+   "effective": {
+    "age": 95,
+    "power": 28,
+    "speed": 59,
+    "height": 94
+   },
+   "strength": 0.2248,
+   "flavor": "A dragon by pedigree. A nuisance by size.",
+   "set_index": 6,
+   "lore": 6,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Ashmaiden_Drake",
+   "name": "Ashmaiden Drake",
+   "faction": "Dragonkind",
+   "rarity": "Rare",
+   "archetype": "swift",
+   "base": {
+    "age": 125,
+    "power": 68,
+    "speed": 74,
+    "height": 410
+   },
+   "effective": {
+    "age": 125,
+    "power": 73,
+    "speed": 69,
+    "height": 410
+   },
+   "strength": 0.6032,
+   "flavor": "Burns the heretic first, asks the name later.",
+   "set_index": 7,
+   "lore": 7,
+   "abilities": [
+    {
+     "id": "Stormstride",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Stormstride",
+     "desc": "When Speed is contested, add +9."
+    },
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Vermilion_Sky_Tyrant",
+   "name": "Vermilion Sky-Tyrant",
+   "faction": "Dragonkind",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 218,
+    "power": 74,
+    "speed": 33,
+    "height": 1450
+   },
+   "effective": {
+    "age": 218,
+    "power": 80,
+    "speed": 30,
+    "height": 1450
+   },
+   "strength": 0.539,
+   "flavor": "Its shadow is a county's worth of bad weather.",
+   "set_index": 8,
+   "lore": 8,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Hoarder_of_the_Second_Age",
+   "name": "Hoarder of the Second Age",
+   "faction": "Dragonkind",
+   "rarity": "Rare",
+   "archetype": "elder",
+   "base": {
+    "age": 5400,
+    "power": 88,
+    "speed": 45,
+    "height": 1900
+   },
+   "effective": {
+    "age": 5400,
+    "power": 95,
+    "speed": 41,
+    "height": 1900
+   },
+   "strength": 0.7202,
+   "flavor": "Two ages of tribute, none of it spent.",
+   "set_index": 9,
+   "lore": 9,
+   "abilities": [
+    {
+     "id": "HoardMagic",
+     "effect": "PotScoreBonusOnWin",
+     "attribute": "Power",
+     "a": 2,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Hoard-Magic",
+     "desc": "+2 score per pot card when you claim the pot."
+    },
+    {
+     "id": "EmberFury",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Ember Fury",
+     "desc": "When Power is contested, add +9."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Elder_Blue_Tempest",
+   "name": "Elder Blue Tempest",
+   "faction": "Dragonkind",
+   "rarity": "Legendary",
+   "archetype": "brute",
+   "base": {
+    "age": 7200,
+    "power": 101,
+    "speed": 58,
+    "height": 2100
+   },
+   "effective": {
+    "age": 7200,
+    "power": 109,
+    "speed": 54,
+    "height": 2100
+   },
+   "strength": 0.8165,
+   "flavor": "Lightning is what it does while thinking.",
+   "set_index": 10,
+   "lore": 10,
+   "abilities": [
+    {
+     "id": "ColossalProwess",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Power",
+     "a": 11,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Colossal Prowess",
+     "desc": "When Power is contested, add 11%."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Wyrm_of_the_Broken_Oath",
+   "name": "Wyrm of the Broken Oath",
+   "faction": "Dragonkind",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 579,
+    "power": 84,
+    "speed": 29,
+    "height": 1750
+   },
+   "effective": {
+    "age": 579,
+    "power": 91,
+    "speed": 26,
+    "height": 1750
+   },
+   "strength": 0.6147,
+   "flavor": "Cursed to hunt every knight who ever lied to it.",
+   "set_index": 11,
+   "lore": 11,
+   "abilities": [
+    {
+     "id": "GiantSlayer",
+     "effect": "BonusIfOpponentStatAbove",
+     "attribute": "Height",
+     "a": 18,
+     "b": 300,
+     "min": "Uncommon",
+     "name": "Giant-Slayer",
+     "desc": "+18% when the opponent's Height is above 300 cm."
+    },
+    {
+     "id": "CursedRelic",
+     "effect": "AlwaysPenalty",
+     "attribute": "Power",
+     "a": -12,
+     "b": 0,
+     "min": "Common",
+     "name": "Cursed",
+     "desc": "Subtract 12% from every attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Archmage_of_the_Ninth_Spire",
+   "name": "Archmage of the Ninth Spire",
+   "faction": "ArcaneOrders",
+   "rarity": "Legendary",
+   "archetype": "caster",
+   "base": {
+    "age": 840,
+    "power": 95,
+    "speed": 64,
+    "height": 204
+   },
+   "effective": {
+    "age": 991,
+    "power": 91,
+    "speed": 64,
+    "height": 204
+   },
+   "strength": 0.6261,
+   "flavor": "Nine spires, one tenure, zero patience.",
+   "set_index": 1,
+   "lore": 12,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Apprentice_of_the_Blue_Order",
+   "name": "Apprentice of the Blue Order",
+   "faction": "ArcaneOrders",
+   "rarity": "Common",
+   "archetype": "balanced",
+   "base": {
+    "age": 101,
+    "power": 38,
+    "speed": 54,
+    "height": 197
+   },
+   "effective": {
+    "age": 119,
+    "power": 36,
+    "speed": 54,
+    "height": 197
+   },
+   "strength": 0.2798,
+   "flavor": "Borrowed a wand. Will not return it.",
+   "set_index": 2,
+   "lore": 13,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Hedge_Witch_of_Fenwick",
+   "name": "Hedge Witch of Fenwick",
+   "faction": "ArcaneOrders",
+   "rarity": "Common",
+   "archetype": "caster",
+   "base": {
+    "age": 157,
+    "power": 60,
+    "speed": 52,
+    "height": 209
+   },
+   "effective": {
+    "age": 185,
+    "power": 57,
+    "speed": 52,
+    "height": 209
+   },
+   "strength": 0.3624,
+   "flavor": "Her poultices work. Her prices are obscene.",
+   "set_index": 3,
+   "lore": 14,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Clockwork_Familiar",
+   "name": "Clockwork Familiar",
+   "faction": "ArcaneOrders",
+   "rarity": "Uncommon",
+   "archetype": "vermin",
+   "base": {
+    "age": 44,
+    "power": 34,
+    "speed": 76,
+    "height": 46
+   },
+   "effective": {
+    "age": 52,
+    "power": 32,
+    "speed": 76,
+    "height": 46
+   },
+   "strength": 0.2546,
+   "flavor": "Wind it, and it files your paperwork.",
+   "set_index": 4,
+   "lore": 15,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Chronomancer_of_the_Grey_Hour",
+   "name": "Chronomancer of the Grey Hour",
+   "faction": "ArcaneOrders",
+   "rarity": "Rare",
+   "archetype": "elder",
+   "base": {
+    "age": 3100,
+    "power": 79,
+    "speed": 57,
+    "height": 291
+   },
+   "effective": {
+    "age": 3658,
+    "power": 76,
+    "speed": 57,
+    "height": 291
+   },
+   "strength": 0.656,
+   "flavor": "Arrives precisely one minute before you need him.",
+   "set_index": 5,
+   "lore": 16,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    },
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Runescribe_of_the_Fallen_College",
+   "name": "Runescribe of the Fallen College",
+   "faction": "ArcaneOrders",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 260,
+    "power": 70,
+    "speed": 58,
+    "height": 250
+   },
+   "effective": {
+    "age": 307,
+    "power": 67,
+    "speed": 58,
+    "height": 250
+   },
+   "strength": 0.5344,
+   "flavor": "Every glyph is a promise the mountain remembers.",
+   "set_index": 6,
+   "lore": 17,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Pyromancer_Duelist",
+   "name": "Pyromancer Duelist",
+   "faction": "ArcaneOrders",
+   "rarity": "Uncommon",
+   "archetype": "swift",
+   "base": {
+    "age": 69,
+    "power": 59,
+    "speed": 66,
+    "height": 176
+   },
+   "effective": {
+    "age": 81,
+    "power": 56,
+    "speed": 66,
+    "height": 176
+   },
+   "strength": 0.3073,
+   "flavor": "Counts to two. Rarely gets to three.",
+   "set_index": 7,
+   "lore": 18,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Necrotheologian",
+   "name": "Necrotheologian",
+   "faction": "ArcaneOrders",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 410,
+    "power": 68,
+    "speed": 52,
+    "height": 247
+   },
+   "effective": {
+    "age": 484,
+    "power": 65,
+    "speed": 52,
+    "height": 247
+   },
+   "strength": 0.5046,
+   "flavor": "Wrote the funeral rites for things that never die.",
+   "set_index": 8,
+   "lore": 19,
+   "abilities": [
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Mirror_Knight_Errant",
+   "name": "Mirror Knight Errant",
+   "faction": "ArcaneOrders",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 78,
+    "power": 57,
+    "speed": 61,
+    "height": 234
+   },
+   "effective": {
+    "age": 92,
+    "power": 54,
+    "speed": 61,
+    "height": 234
+   },
+   "strength": 0.3899,
+   "flavor": "Fights you with your own reflexes, borrowed.",
+   "set_index": 9,
+   "lore": 20,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Unbound_Theurge",
+   "name": "The Unbound Theurge",
+   "faction": "ArcaneOrders",
+   "rarity": "Mythic",
+   "archetype": "caster",
+   "base": {
+    "age": 6000,
+    "power": 104,
+    "speed": 71,
+    "height": 381
+   },
+   "effective": {
+    "age": 7080,
+    "power": 100,
+    "speed": 71,
+    "height": 381
+   },
+   "strength": 0.8234,
+   "flavor": "Made a bargain with a god and won the paperwork.",
+   "set_index": 10,
+   "lore": 21,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Storm_Tower_Magus",
+   "name": "Storm-Tower Magus",
+   "faction": "ArcaneOrders",
+   "rarity": "Legendary",
+   "archetype": "brute",
+   "base": {
+    "age": 520,
+    "power": 93,
+    "speed": 49,
+    "height": 255
+   },
+   "effective": {
+    "age": 614,
+    "power": 89,
+    "speed": 49,
+    "height": 255
+   },
+   "strength": 0.5917,
+   "flavor": "Channels the sky through a very expensive hat.",
+   "set_index": 11,
+   "lore": 22,
+   "abilities": [
+    {
+     "id": "EmberFury",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Ember Fury",
+     "desc": "When Power is contested, add +9."
+    },
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Sworn_Shield_of_the_Dawn_Gate",
+   "name": "Sworn Shield of the Dawn Gate",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Common",
+   "archetype": "holy",
+   "base": {
+    "age": 134,
+    "power": 48,
+    "speed": 51,
+    "height": 195
+   },
+   "effective": {
+    "age": 134,
+    "power": 48,
+    "speed": 54,
+    "height": 186
+   },
+   "strength": 0.2798,
+   "flavor": "Twenty years on one wall. The wall thanks them occasionally.",
+   "set_index": 1,
+   "lore": 23,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Knight_Errant_of_the_Silver_Brake",
+   "name": "Knight-Errant of the Silver Brake",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 38,
+    "power": 49,
+    "speed": 63,
+    "height": 146
+   },
+   "effective": {
+    "age": 38,
+    "power": 49,
+    "speed": 67,
+    "height": 139
+   },
+   "strength": 0.2454,
+   "flavor": "Lost a joust, gained a song.",
+   "set_index": 2,
+   "lore": 24,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Battle_Priest_of_the_Ashen_Rite",
+   "name": "Battle Priest of the Ashen Rite",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Uncommon",
+   "archetype": "holy",
+   "base": {
+    "age": 44,
+    "power": 58,
+    "speed": 52,
+    "height": 246
+   },
+   "effective": {
+    "age": 44,
+    "power": 58,
+    "speed": 55,
+    "height": 235
+   },
+   "strength": 0.344,
+   "flavor": "Blesses the wound, then widens it.",
+   "set_index": 3,
+   "lore": 25,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Order_Marshal",
+   "name": "Order Marshal",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Rare",
+   "archetype": "balanced",
+   "base": {
+    "age": 96,
+    "power": 69,
+    "speed": 62,
+    "height": 241
+   },
+   "effective": {
+    "age": 96,
+    "power": 69,
+    "speed": 66,
+    "height": 230
+   },
+   "strength": 0.4817,
+   "flavor": "Drills in the morning, buries in the afternoon.",
+   "set_index": 4,
+   "lore": 26,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    },
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Lancer_of_the_Two_Bridges_Guard",
+   "name": "Lancer of the Two-Bridges Guard",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Uncommon",
+   "archetype": "swift",
+   "base": {
+    "age": 66,
+    "power": 56,
+    "speed": 70,
+    "height": 205
+   },
+   "effective": {
+    "age": 66,
+    "power": 56,
+    "speed": 74,
+    "height": 196
+   },
+   "strength": 0.3555,
+   "flavor": "Never lost a bridge.",
+   "set_index": 5,
+   "lore": 27,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Grave_Warden_Knight",
+   "name": "Grave-Warden Knight",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Rare",
+   "archetype": "brute",
+   "base": {
+    "age": 140,
+    "power": 71,
+    "speed": 47,
+    "height": 251
+   },
+   "effective": {
+    "age": 140,
+    "power": 71,
+    "speed": 50,
+    "height": 240
+   },
+   "strength": 0.4633,
+   "flavor": "Sworn to keep what the legion wants back.",
+   "set_index": 6,
+   "lore": 28,
+   "abilities": [
+    {
+     "id": "BaneOfTheDead",
+     "effect": "BonusAgainstFaction",
+     "attribute": "Power",
+     "a": 16,
+     "b": 0,
+     "min": "Rare",
+     "faction": "UndyingLegion",
+     "name": "Death-Bane",
+     "desc": "+16% against the Undying Legion."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Paladin_of_the_Broken_Chain",
+   "name": "Paladin of the Broken Chain",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Epic",
+   "archetype": "holy",
+   "base": {
+    "age": 688,
+    "power": 86,
+    "speed": 64,
+    "height": 230
+   },
+   "effective": {
+    "age": 688,
+    "power": 86,
+    "speed": 68,
+    "height": 220
+   },
+   "strength": 0.6422,
+   "flavor": "Freed ten thousand slaves and one demon, by accident.",
+   "set_index": 7,
+   "lore": 29,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Herald_of_the_Last_Muster",
+   "name": "Herald of the Last Muster",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Rare",
+   "archetype": "holy",
+   "base": {
+    "age": 88,
+    "power": 63,
+    "speed": 59,
+    "height": 285
+   },
+   "effective": {
+    "age": 88,
+    "power": 63,
+    "speed": 63,
+    "height": 273
+   },
+   "strength": 0.4771,
+   "flavor": "Reads the names aloud. The line grows shorter.",
+   "set_index": 8,
+   "lore": 30,
+   "abilities": [
+    {
+     "id": "Oathkeeper",
+     "effect": "BonusPerFactionInOwnPile",
+     "attribute": "Power",
+     "a": 4,
+     "b": 6,
+     "min": "Rare",
+     "name": "Oathkeeper",
+     "desc": "Add 4% per allied trophy in your pile, to 6 trophies."
+    }
+   ]
+  },
+  {
+   "id": "FCB_War_Abbot_of_Ironvow",
+   "name": "War-Abbot of Ironvow",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Legendary",
+   "archetype": "brute",
+   "base": {
+    "age": 920,
+    "power": 96,
+    "speed": 55,
+    "height": 245
+   },
+   "effective": {
+    "age": 920,
+    "power": 96,
+    "speed": 58,
+    "height": 234
+   },
+   "strength": 0.6697,
+   "flavor": "Vowed silence in the eleventh year of the siege.",
+   "set_index": 9,
+   "lore": 31,
+   "abilities": [
+    {
+     "id": "ColossalProwess",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Power",
+     "a": 11,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Colossal Prowess",
+     "desc": "When Power is contested, add 11%."
+    },
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Duellist_of_the_Ninth_Hour",
+   "name": "Duellist of the Ninth Hour",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Rare",
+   "archetype": "swift",
+   "base": {
+    "age": 325,
+    "power": 74,
+    "speed": 92,
+    "height": 203
+   },
+   "effective": {
+    "age": 325,
+    "power": 74,
+    "speed": 98,
+    "height": 194
+   },
+   "strength": 0.6032,
+   "flavor": "Wins on the last step of a very long argument.",
+   "set_index": 10,
+   "lore": 32,
+   "abilities": [
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Oath_That_Walks",
+   "name": "The Oath That Walks",
+   "faction": "OrderOfTheBlade",
+   "rarity": "Legendary",
+   "archetype": "holy",
+   "base": {
+    "age": 12000,
+    "power": 103,
+    "speed": 68,
+    "height": 290
+   },
+   "effective": {
+    "age": 12000,
+    "power": 103,
+    "speed": 72,
+    "height": 277
+   },
+   "strength": 0.8211,
+   "flavor": "A vow so old it grew armour and started walking.",
+   "set_index": 11,
+   "lore": 33,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    },
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Deep_Delver_Sergeant",
+   "name": "Deep Delver Sergeant",
+   "faction": "Ironhold",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 186,
+    "power": 56,
+    "speed": 52,
+    "height": 204
+   },
+   "effective": {
+    "age": 186,
+    "power": 56,
+    "speed": 49,
+    "height": 231
+   },
+   "strength": 0.3784,
+   "flavor": "Three feet of dwarf, forty feet of grudges.",
+   "set_index": 1,
+   "lore": 34,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Runesmith_of_the_Ninth_Forge",
+   "name": "Runesmith of the Ninth Forge",
+   "faction": "Ironhold",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 173,
+    "power": 58,
+    "speed": 53,
+    "height": 191
+   },
+   "effective": {
+    "age": 173,
+    "power": 58,
+    "speed": 50,
+    "height": 216
+   },
+   "strength": 0.3647,
+   "flavor": "Hammers blessings into steel while they are still hot.",
+   "set_index": 2,
+   "lore": 35,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Anvil_Brawler",
+   "name": "Anvil-Brawler",
+   "faction": "Ironhold",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 180,
+    "power": 61,
+    "speed": 52,
+    "height": 197
+   },
+   "effective": {
+    "age": 180,
+    "power": 61,
+    "speed": 49,
+    "height": 223
+   },
+   "strength": 0.383,
+   "flavor": "Argues with metal. Metal loses.",
+   "set_index": 3,
+   "lore": 36,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Stonebridge_Warden",
+   "name": "Stonebridge Warden",
+   "faction": "Ironhold",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 218,
+    "power": 72,
+    "speed": 32,
+    "height": 760
+   },
+   "effective": {
+    "age": 218,
+    "power": 72,
+    "speed": 30,
+    "height": 859
+   },
+   "strength": 0.5023,
+   "flavor": "Holds the bridge. Has held it for a while.",
+   "set_index": 4,
+   "lore": 37,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Golem_of_the_Hollow_Vault",
+   "name": "Golem of the Hollow Vault",
+   "faction": "Ironhold",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 214,
+    "power": 76,
+    "speed": 26,
+    "height": 980
+   },
+   "effective": {
+    "age": 214,
+    "power": 76,
+    "speed": 24,
+    "height": 1107
+   },
+   "strength": 0.5092,
+   "flavor": "Doors, but very slowly and with great opinion.",
+   "set_index": 5,
+   "lore": 38,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Forge_Titan_Kurnold",
+   "name": "Forge-Titan Kurnold",
+   "faction": "Ironhold",
+   "rarity": "Epic",
+   "archetype": "titan",
+   "base": {
+    "age": 573,
+    "power": 89,
+    "speed": 24,
+    "height": 1600
+   },
+   "effective": {
+    "age": 573,
+    "power": 89,
+    "speed": 22,
+    "height": 1808
+   },
+   "strength": 0.5986,
+   "flavor": "Anvils its hammer on the mountain, for practice.",
+   "set_index": 6,
+   "lore": 39,
+   "abilities": [
+    {
+     "id": "ColossalProwess",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Power",
+     "a": 11,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Colossal Prowess",
+     "desc": "When Power is contested, add 11%."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Grudge_Keeper_of_the_Long_Hall",
+   "name": "Grudge-Keeper of the Long Hall",
+   "faction": "Ironhold",
+   "rarity": "Legendary",
+   "archetype": "elder",
+   "base": {
+    "age": 1400,
+    "power": 94,
+    "speed": 38,
+    "height": 200
+   },
+   "effective": {
+    "age": 1400,
+    "power": 94,
+    "speed": 35,
+    "height": 226
+   },
+   "strength": 0.5596,
+   "flavor": "Four centuries of wrongs, alphabetised.",
+   "set_index": 7,
+   "lore": 40,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    },
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Boulder_Shaped_Berserker",
+   "name": "Boulder-Shaped Berserker",
+   "faction": "Ironhold",
+   "rarity": "Uncommon",
+   "archetype": "beast",
+   "base": {
+    "age": 98,
+    "power": 62,
+    "speed": 52,
+    "height": 226
+   },
+   "effective": {
+    "age": 98,
+    "power": 62,
+    "speed": 49,
+    "height": 255
+   },
+   "strength": 0.3922,
+   "flavor": "Rolls downhill. Calls it tactics.",
+   "set_index": 8,
+   "lore": 41,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Gilded_Vault_Warden",
+   "name": "Gilded Vault Warden",
+   "faction": "Ironhold",
+   "rarity": "Epic",
+   "archetype": "brute",
+   "base": {
+    "age": 390,
+    "power": 83,
+    "speed": 42,
+    "height": 240
+   },
+   "effective": {
+    "age": 390,
+    "power": 83,
+    "speed": 39,
+    "height": 271
+   },
+   "strength": 0.5367,
+   "flavor": "Paid in coin, guarding coin, counting coin.",
+   "set_index": 9,
+   "lore": 42,
+   "abilities": [
+    {
+     "id": "HoardMagic",
+     "effect": "PotScoreBonusOnWin",
+     "attribute": "Power",
+     "a": 2,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Hoard-Magic",
+     "desc": "+2 score per pot card when you claim the pot."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Steam_Maul_Engineer",
+   "name": "Steam-Maul Engineer",
+   "faction": "Ironhold",
+   "rarity": "Rare",
+   "archetype": "balanced",
+   "base": {
+    "age": 152,
+    "power": 68,
+    "speed": 55,
+    "height": 185
+   },
+   "effective": {
+    "age": 152,
+    "power": 68,
+    "speed": 52,
+    "height": 209
+   },
+   "strength": 0.3991,
+   "flavor": "Her machine works. Do not ask about the noise.",
+   "set_index": 10,
+   "lore": 43,
+   "abilities": [
+    {
+     "id": "Stormstride",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Stormstride",
+     "desc": "When Speed is contested, add +9."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_First_Ancestor",
+   "name": "The First Ancestor",
+   "faction": "Ironhold",
+   "rarity": "Legendary",
+   "archetype": "titan",
+   "base": {
+    "age": 21000,
+    "power": 106,
+    "speed": 22,
+    "height": 2200
+   },
+   "effective": {
+    "age": 21000,
+    "power": 106,
+    "speed": 20,
+    "height": 2486
+   },
+   "strength": 0.7294,
+   "flavor": "Carved before mountains agreed to stay put.",
+   "set_index": 11,
+   "lore": 44,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    },
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Sprite_of_the_Dew_Market",
+   "name": "Sprite of the Dew Market",
+   "faction": "FeyCourt",
+   "rarity": "Common",
+   "archetype": "vermin",
+   "base": {
+    "age": 24,
+    "power": 21,
+    "speed": 84,
+    "height": 25
+   },
+   "effective": {
+    "age": 24,
+    "power": 19,
+    "speed": 91,
+    "height": 25
+   },
+   "strength": 0.2362,
+   "flavor": "Sells dew. Delivers it before you agree.",
+   "set_index": 1,
+   "lore": 45,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Thorn_Riding_Piskie",
+   "name": "Thorn-Riding Piskie",
+   "faction": "FeyCourt",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 35,
+    "power": 36,
+    "speed": 78,
+    "height": 70
+   },
+   "effective": {
+    "age": 35,
+    "power": 33,
+    "speed": 84,
+    "height": 70
+   },
+   "strength": 0.2615,
+   "flavor": "Steals buttons, then the regiment.",
+   "set_index": 2,
+   "lore": 46,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Hedge_Knight_of_the_Green_March",
+   "name": "Hedge-Knight of the Green March",
+   "faction": "FeyCourt",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 80,
+    "power": 54,
+    "speed": 68,
+    "height": 175
+   },
+   "effective": {
+    "age": 80,
+    "power": 50,
+    "speed": 73,
+    "height": 175
+   },
+   "strength": 0.3211,
+   "flavor": "Chivalry, but the clauses favour him.",
+   "set_index": 3,
+   "lore": 47,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Fae_of_the_Ninefold_Name",
+   "name": "Fae of the Ninefold Name",
+   "faction": "FeyCourt",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 900,
+    "power": 66,
+    "speed": 63,
+    "height": 227
+   },
+   "effective": {
+    "age": 900,
+    "power": 61,
+    "speed": 68,
+    "height": 227
+   },
+   "strength": 0.5711,
+   "flavor": "Tell it your name and it owns the second syllable.",
+   "set_index": 4,
+   "lore": 48,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Court_Dancer_Unfinished",
+   "name": "Court Dancer, Unfinished",
+   "faction": "FeyCourt",
+   "rarity": "Rare",
+   "archetype": "swift",
+   "base": {
+    "age": 132,
+    "power": 64,
+    "speed": 88,
+    "height": 188
+   },
+   "effective": {
+    "age": 132,
+    "power": 59,
+    "speed": 95,
+    "height": 188
+   },
+   "strength": 0.4679,
+   "flavor": "Her solo has lasted three human generations.",
+   "set_index": 5,
+   "lore": 49,
+   "abilities": [
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    },
+    {
+     "id": "Stormstride",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Stormstride",
+     "desc": "When Speed is contested, add +9."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Oberon_s_Hounds",
+   "name": "Oberon's Hounds",
+   "faction": "FeyCourt",
+   "rarity": "Rare",
+   "archetype": "beast",
+   "base": {
+    "age": 294,
+    "power": 81,
+    "speed": 90,
+    "height": 237
+   },
+   "effective": {
+    "age": 294,
+    "power": 75,
+    "speed": 97,
+    "height": 237
+   },
+   "strength": 0.6789,
+   "flavor": "They do not chase. They arrive.",
+   "set_index": 6,
+   "lore": 50,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Grinning_Hollow_Man",
+   "name": "Grinning Hollow Man",
+   "faction": "FeyCourt",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 78,
+    "power": 52,
+    "speed": 59,
+    "height": 215
+   },
+   "effective": {
+    "age": 78,
+    "power": 48,
+    "speed": 64,
+    "height": 215
+   },
+   "strength": 0.3211,
+   "flavor": "No face, all expression.",
+   "set_index": 7,
+   "lore": 51,
+   "abilities": [
+    {
+     "id": "CursedRelic",
+     "effect": "AlwaysPenalty",
+     "attribute": "Power",
+     "a": -12,
+     "b": 0,
+     "min": "Common",
+     "name": "Cursed",
+     "desc": "Subtract 12% from every attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Wisp_Warden",
+   "name": "Wisp Warden",
+   "faction": "FeyCourt",
+   "rarity": "Common",
+   "archetype": "vermin",
+   "base": {
+    "age": 27,
+    "power": 26,
+    "speed": 74,
+    "height": 45
+   },
+   "effective": {
+    "age": 27,
+    "power": 23,
+    "speed": 80,
+    "height": 45
+   },
+   "strength": 0.2271,
+   "flavor": "Carries lanterns; is the lantern.",
+   "set_index": 8,
+   "lore": 52,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Autumn_Queen",
+   "name": "The Autumn Queen",
+   "faction": "FeyCourt",
+   "rarity": "Legendary",
+   "archetype": "holy",
+   "base": {
+    "age": 3000,
+    "power": 90,
+    "speed": 66,
+    "height": 215
+   },
+   "effective": {
+    "age": 3000,
+    "power": 84,
+    "speed": 71,
+    "height": 215
+   },
+   "strength": 0.6651,
+   "flavor": "Every deal she offers is fair. Twice.",
+   "set_index": 9,
+   "lore": 53,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "Oathkeeper",
+     "effect": "BonusPerFactionInOwnPile",
+     "attribute": "Power",
+     "a": 4,
+     "b": 6,
+     "min": "Rare",
+     "name": "Oathkeeper",
+     "desc": "Add 4% per allied trophy in your pile, to 6 trophies."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Briar_Colossus",
+   "name": "Briar Colossus",
+   "faction": "FeyCourt",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 594,
+    "power": 86,
+    "speed": 28,
+    "height": 1300
+   },
+   "effective": {
+    "age": 594,
+    "power": 80,
+    "speed": 30,
+    "height": 1300
+   },
+   "strength": 0.5803,
+   "flavor": "A hedge, technically. A catastrophe, practically.",
+   "set_index": 10,
+   "lore": 54,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Twelfth_Night_Trickster",
+   "name": "Twelfth-Night Trickster",
+   "faction": "FeyCourt",
+   "rarity": "Epic",
+   "archetype": "swift",
+   "base": {
+    "age": 8000,
+    "power": 99,
+    "speed": 104,
+    "height": 298
+   },
+   "effective": {
+    "age": 8000,
+    "power": 92,
+    "speed": 112,
+    "height": 298
+   },
+   "strength": 0.8624,
+   "flavor": "Keeps the last hour of every year as a spare.",
+   "set_index": 11,
+   "lore": 55,
+   "abilities": [
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Bone_Sentry_of_the_Low_Gate",
+   "name": "Bone Sentry of the Low Gate",
+   "faction": "UndyingLegion",
+   "rarity": "Common",
+   "archetype": "undead",
+   "base": {
+    "age": 234,
+    "power": 53,
+    "speed": 45,
+    "height": 200
+   },
+   "effective": {
+    "age": 304,
+    "power": 53,
+    "speed": 43,
+    "height": 200
+   },
+   "strength": 0.3234,
+   "flavor": "Twenty lifetimes on night shift.",
+   "set_index": 1,
+   "lore": 56,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Wailing_Wraith",
+   "name": "Wailing Wraith",
+   "faction": "UndyingLegion",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 37,
+    "power": 41,
+    "speed": 66,
+    "height": 225
+   },
+   "effective": {
+    "age": 48,
+    "power": 41,
+    "speed": 64,
+    "height": 225
+   },
+   "strength": 0.3165,
+   "flavor": "Loudest at three in the morning, always.",
+   "set_index": 2,
+   "lore": 57,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Grave_Touched_Ghoul",
+   "name": "Grave-Touched Ghoul",
+   "faction": "UndyingLegion",
+   "rarity": "Uncommon",
+   "archetype": "beast",
+   "base": {
+    "age": 80,
+    "power": 61,
+    "speed": 58,
+    "height": 196
+   },
+   "effective": {
+    "age": 104,
+    "power": 61,
+    "speed": 56,
+    "height": 196
+   },
+   "strength": 0.3394,
+   "flavor": "Digs with a courtesy it does not extend.",
+   "set_index": 3,
+   "lore": 58,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Crypt_Bishop",
+   "name": "Crypt Bishop",
+   "faction": "UndyingLegion",
+   "rarity": "Uncommon",
+   "archetype": "caster",
+   "base": {
+    "age": 191,
+    "power": 55,
+    "speed": 51,
+    "height": 206
+   },
+   "effective": {
+    "age": 248,
+    "power": 55,
+    "speed": 49,
+    "height": 206
+   },
+   "strength": 0.344,
+   "flavor": "Reads last rites over the wrong books.",
+   "set_index": 4,
+   "lore": 59,
+   "abilities": [
+    {
+     "id": "HoardMagic",
+     "effect": "PotScoreBonusOnWin",
+     "attribute": "Power",
+     "a": 2,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Hoard-Magic",
+     "desc": "+2 score per pot card when you claim the pot."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Vampire_of_the_Pale_Waltz",
+   "name": "Vampire of the Pale Waltz",
+   "faction": "UndyingLegion",
+   "rarity": "Rare",
+   "archetype": "swift",
+   "base": {
+    "age": 760,
+    "power": 68,
+    "speed": 76,
+    "height": 189
+   },
+   "effective": {
+    "age": 988,
+    "power": 68,
+    "speed": 73,
+    "height": 189
+   },
+   "strength": 0.5688,
+   "flavor": "Never ages, always arrives late, never wrong.",
+   "set_index": 5,
+   "lore": 60,
+   "abilities": [
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    },
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Skeleton_Chorus",
+   "name": "Skeleton Chorus",
+   "faction": "UndyingLegion",
+   "rarity": "Uncommon",
+   "archetype": "horde",
+   "base": {
+    "age": 137,
+    "power": 64,
+    "speed": 54,
+    "height": 195
+   },
+   "effective": {
+    "age": 178,
+    "power": 64,
+    "speed": 52,
+    "height": 195
+   },
+   "strength": 0.367,
+   "flavor": "Perfect harmony, no lungs.",
+   "set_index": 6,
+   "lore": 61,
+   "abilities": [
+    {
+     "id": "AncientBlood",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Common",
+     "name": "Ancient Blood",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Bog_Revenant",
+   "name": "Bog Revenant",
+   "faction": "UndyingLegion",
+   "rarity": "Epic",
+   "archetype": "undead",
+   "base": {
+    "age": 1900,
+    "power": 84,
+    "speed": 41,
+    "height": 257
+   },
+   "effective": {
+    "age": 2470,
+    "power": 84,
+    "speed": 39,
+    "height": 257
+   },
+   "strength": 0.5894,
+   "flavor": "Drowned twice. Found both times.",
+   "set_index": 7,
+   "lore": 62,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    },
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Lich_of_the_Sunless_Crown",
+   "name": "Lich of the Sunless Crown",
+   "faction": "UndyingLegion",
+   "rarity": "Epic",
+   "archetype": "caster",
+   "base": {
+    "age": 4300,
+    "power": 97,
+    "speed": 52,
+    "height": 284
+   },
+   "effective": {
+    "age": 5590,
+    "power": 97,
+    "speed": 50,
+    "height": 284
+   },
+   "strength": 0.6972,
+   "flavor": "His phylactery is in the bank. In escrow. Interest accruing.",
+   "set_index": 8,
+   "lore": 63,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Plague_Heralds",
+   "name": "Plague Heralds",
+   "faction": "UndyingLegion",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 356,
+    "power": 66,
+    "speed": 59,
+    "height": 236
+   },
+   "effective": {
+    "age": 463,
+    "power": 66,
+    "speed": 57,
+    "height": 236
+   },
+   "strength": 0.5206,
+   "flavor": "Cleared the city three days before the bells.",
+   "set_index": 9,
+   "lore": 64,
+   "abilities": [
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Rotting_Colossus",
+   "name": "The Rotting Colossus",
+   "faction": "UndyingLegion",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 573,
+    "power": 88,
+    "speed": 25,
+    "height": 1500
+   },
+   "effective": {
+    "age": 745,
+    "power": 88,
+    "speed": 24,
+    "height": 1500
+   },
+   "strength": 0.6216,
+   "flavor": "A siege that forgot to stop walking.",
+   "set_index": 10,
+   "lore": 65,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "CursedRelic",
+     "effect": "AlwaysPenalty",
+     "attribute": "Power",
+     "a": -12,
+     "b": 0,
+     "min": "Common",
+     "name": "Cursed",
+     "desc": "Subtract 12% from every attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_First_Lich_Last_Silence",
+   "name": "First Lich, Last Silence",
+   "faction": "UndyingLegion",
+   "rarity": "Epic",
+   "archetype": "elder",
+   "base": {
+    "age": 742365,
+    "power": 105,
+    "speed": 37,
+    "height": 436
+   },
+   "effective": {
+    "age": 965075,
+    "power": 105,
+    "speed": 35,
+    "height": 436
+   },
+   "strength": 0.7156,
+   "flavor": "He remembered death before it had a name.",
+   "set_index": 11,
+   "lore": 66,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Hellhound_Pup",
+   "name": "Hellhound Pup",
+   "faction": "AbyssalHorde",
+   "rarity": "Common",
+   "archetype": "beast",
+   "base": {
+    "age": 31,
+    "power": 48,
+    "speed": 74,
+    "height": 90
+   },
+   "effective": {
+    "age": 27,
+    "power": 51,
+    "speed": 74,
+    "height": 90
+   },
+   "strength": 0.2706,
+   "flavor": "Chews boots, then the leg they were on.",
+   "set_index": 1,
+   "lore": 67,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Pit_Brute",
+   "name": "Pit Brute",
+   "faction": "AbyssalHorde",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 109,
+    "power": 56,
+    "speed": 43,
+    "height": 230
+   },
+   "effective": {
+    "age": 97,
+    "power": 60,
+    "speed": 43,
+    "height": 230
+   },
+   "strength": 0.3372,
+   "flavor": "Subtlety is a luxury of the upper spheres.",
+   "set_index": 2,
+   "lore": 68,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Contract_Imp",
+   "name": "Contract Imp",
+   "faction": "AbyssalHorde",
+   "rarity": "Uncommon",
+   "archetype": "vermin",
+   "base": {
+    "age": 46,
+    "power": 33,
+    "speed": 81,
+    "height": 55
+   },
+   "effective": {
+    "age": 40,
+    "power": 35,
+    "speed": 81,
+    "height": 55
+   },
+   "strength": 0.2615,
+   "flavor": "Reads the fine print aloud. Always wins.",
+   "set_index": 3,
+   "lore": 69,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    },
+    {
+     "id": "CursedRelic",
+     "effect": "AlwaysPenalty",
+     "attribute": "Power",
+     "a": -12,
+     "b": 0,
+     "min": "Common",
+     "name": "Cursed",
+     "desc": "Subtract 12% from every attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Barbed_Duelist",
+   "name": "Barbed Duelist",
+   "faction": "AbyssalHorde",
+   "rarity": "Uncommon",
+   "archetype": "swift",
+   "base": {
+    "age": 132,
+    "power": 70,
+    "speed": 72,
+    "height": 200
+   },
+   "effective": {
+    "age": 118,
+    "power": 75,
+    "speed": 72,
+    "height": 200
+   },
+   "strength": 0.4931,
+   "flavor": "Bleeds on the floor and calls it a concession.",
+   "set_index": 4,
+   "lore": 70,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Horned_Siege_Fiend",
+   "name": "Horned Siege Fiend",
+   "faction": "AbyssalHorde",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 218,
+    "power": 78,
+    "speed": 31,
+    "height": 950
+   },
+   "effective": {
+    "age": 195,
+    "power": 83,
+    "speed": 31,
+    "height": 950
+   },
+   "strength": 0.5413,
+   "flavor": "Breaks walls the way dragons break habits.",
+   "set_index": 5,
+   "lore": 71,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "BaneOfDragons",
+     "effect": "BonusAgainstFaction",
+     "attribute": "Power",
+     "a": 16,
+     "b": 0,
+     "min": "Rare",
+     "faction": "Dragonkind",
+     "name": "Dragon-Bane",
+     "desc": "+16% against Dragonkind."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Ashfiend_Marauder",
+   "name": "Ashfiend Marauder",
+   "faction": "AbyssalHorde",
+   "rarity": "Uncommon",
+   "archetype": "brute",
+   "base": {
+    "age": 78,
+    "power": 63,
+    "speed": 57,
+    "height": 222
+   },
+   "effective": {
+    "age": 69,
+    "power": 67,
+    "speed": 57,
+    "height": 222
+   },
+   "strength": 0.3693,
+   "flavor": "Burns the ledger and the accountant.",
+   "set_index": 6,
+   "lore": 72,
+   "abilities": [
+    {
+     "id": "Slaughtering",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Slaughtering",
+     "desc": "When Power is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Duke_of_the_Ninth_Cage",
+   "name": "Duke of the Ninth Cage",
+   "faction": "AbyssalHorde",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 7000,
+    "power": 87,
+    "speed": 61,
+    "height": 266
+   },
+   "effective": {
+    "age": 6299,
+    "power": 93,
+    "speed": 61,
+    "height": 266
+   },
+   "strength": 0.7317,
+   "flavor": "Rules a prison he was told is a palace.",
+   "set_index": 7,
+   "lore": 73,
+   "abilities": [
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    },
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Devourer_of_Names",
+   "name": "Devourer of Names",
+   "faction": "AbyssalHorde",
+   "rarity": "Epic",
+   "archetype": "brute",
+   "base": {
+    "age": 873,
+    "power": 98,
+    "speed": 59,
+    "height": 335
+   },
+   "effective": {
+    "age": 785,
+    "power": 105,
+    "speed": 59,
+    "height": 335
+   },
+   "strength": 0.7385,
+   "flavor": "Eat the name, keep the debts.",
+   "set_index": 8,
+   "lore": 74,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Chain_Iron_Colossus",
+   "name": "Chain-Iron Colossus",
+   "faction": "AbyssalHorde",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 585,
+    "power": 91,
+    "speed": 23,
+    "height": 1450
+   },
+   "effective": {
+    "age": 526,
+    "power": 97,
+    "speed": 23,
+    "height": 1450
+   },
+   "strength": 0.6147,
+   "flavor": "Dragged a mountain chain out of the pit, as a joke.",
+   "set_index": 9,
+   "lore": 75,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "Oathkeeper",
+     "effect": "BonusPerFactionInOwnPile",
+     "attribute": "Power",
+     "a": 4,
+     "b": 6,
+     "min": "Rare",
+     "name": "Oathkeeper",
+     "desc": "Add 4% per allied trophy in your pile, to 6 trophies."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Whisper_of_the_Seventh_Gate",
+   "name": "Whisper of the Seventh Gate",
+   "faction": "AbyssalHorde",
+   "rarity": "Uncommon",
+   "archetype": "swift",
+   "base": {
+    "age": 128,
+    "power": 66,
+    "speed": 84,
+    "height": 176
+   },
+   "effective": {
+    "age": 114,
+    "power": 71,
+    "speed": 84,
+    "height": 176
+   },
+   "strength": 0.4817,
+   "flavor": "Repeats your secrets, but slightly wrong.",
+   "set_index": 10,
+   "lore": 76,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Unbound_Archfiend",
+   "name": "The Unbound Archfiend",
+   "faction": "AbyssalHorde",
+   "rarity": "Epic",
+   "archetype": "brute",
+   "base": {
+    "age": 19000,
+    "power": 110,
+    "speed": 49,
+    "height": 425
+   },
+   "effective": {
+    "age": 17099,
+    "power": 118,
+    "speed": 49,
+    "height": 425
+   },
+   "strength": 0.7569,
+   "flavor": "Escaped once. Regretted it. Escaped again.",
+   "set_index": 11,
+   "lore": 77,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Dawn_Sentry",
+   "name": "Dawn Sentry",
+   "faction": "CelestialHost",
+   "rarity": "Common",
+   "archetype": "holy",
+   "base": {
+    "age": 76,
+    "power": 47,
+    "speed": 57,
+    "height": 205
+   },
+   "effective": {
+    "age": 76,
+    "power": 44,
+    "speed": 57,
+    "height": 221
+   },
+   "strength": 0.289,
+   "flavor": "Never misses a sunrise. Has opinions about it.",
+   "set_index": 1,
+   "lore": 78,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Cloudlight_Aerial",
+   "name": "Cloudlight Aerial",
+   "faction": "CelestialHost",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 69,
+    "power": 53,
+    "speed": 80,
+    "height": 163
+   },
+   "effective": {
+    "age": 69,
+    "power": 50,
+    "speed": 80,
+    "height": 176
+   },
+   "strength": 0.3349,
+   "flavor": "Fights in the third dimension; everyone else in two.",
+   "set_index": 2,
+   "lore": 79,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Storm_Colossus",
+   "name": "Storm Colossus",
+   "faction": "CelestialHost",
+   "rarity": "Rare",
+   "archetype": "titan",
+   "base": {
+    "age": 216,
+    "power": 77,
+    "speed": 30,
+    "height": 1800
+   },
+   "effective": {
+    "age": 216,
+    "power": 73,
+    "speed": 30,
+    "height": 1944
+   },
+   "strength": 0.5298,
+   "flavor": "Walks on thunder out of politeness.",
+   "set_index": 3,
+   "lore": 80,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "EmberFury",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Power",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Ember Fury",
+     "desc": "When Power is contested, add +9."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Seraph_of_the_Seven_Trumps",
+   "name": "Seraph of the Seven Trumps",
+   "faction": "CelestialHost",
+   "rarity": "Epic",
+   "archetype": "holy",
+   "base": {
+    "age": 690,
+    "power": 85,
+    "speed": 69,
+    "height": 317
+   },
+   "effective": {
+    "age": 690,
+    "power": 81,
+    "speed": 69,
+    "height": 342
+   },
+   "strength": 0.7202,
+   "flavor": "Six trumpets are a warning. The seventh is the order.",
+   "set_index": 4,
+   "lore": 81,
+   "abilities": [
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    },
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Justice_Herald",
+   "name": "Justice Herald",
+   "faction": "CelestialHost",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 81,
+    "power": 59,
+    "speed": 60,
+    "height": 202
+   },
+   "effective": {
+    "age": 81,
+    "power": 56,
+    "speed": 60,
+    "height": 218
+   },
+   "strength": 0.344,
+   "flavor": "Reads the charge, then passes the sentence.",
+   "set_index": 5,
+   "lore": 82,
+   "abilities": [
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Gale_Rider",
+   "name": "Gale Rider",
+   "faction": "CelestialHost",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 40,
+    "power": 42,
+    "speed": 77,
+    "height": 146
+   },
+   "effective": {
+    "age": 40,
+    "power": 39,
+    "speed": 77,
+    "height": 158
+   },
+   "strength": 0.2775,
+   "flavor": "Delivers verdicts and messages, mostly verdicts.",
+   "set_index": 6,
+   "lore": 83,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Astral_Dragon_Slain",
+   "name": "Astral Dragon-Slain",
+   "faction": "CelestialHost",
+   "rarity": "Rare",
+   "archetype": "holy",
+   "base": {
+    "age": 250,
+    "power": 73,
+    "speed": 65,
+    "height": 276
+   },
+   "effective": {
+    "age": 250,
+    "power": 69,
+    "speed": 65,
+    "height": 298
+   },
+   "strength": 0.6009,
+   "flavor": "A saint with a very specific r\u00e9sum\u00e9.",
+   "set_index": 7,
+   "lore": 84,
+   "abilities": [
+    {
+     "id": "BaneOfDragons",
+     "effect": "BonusAgainstFaction",
+     "attribute": "Power",
+     "a": 16,
+     "b": 0,
+     "min": "Rare",
+     "faction": "Dragonkind",
+     "name": "Dragon-Bane",
+     "desc": "+16% against Dragonkind."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Throne_Warden",
+   "name": "Throne Warden",
+   "faction": "CelestialHost",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 587,
+    "power": 88,
+    "speed": 27,
+    "height": 1150
+   },
+   "effective": {
+    "age": 587,
+    "power": 83,
+    "speed": 27,
+    "height": 1242
+   },
+   "strength": 0.5826,
+   "flavor": "Has not blinked since the second age.",
+   "set_index": 8,
+   "lore": 85,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "HoardMagic",
+     "effect": "PotScoreBonusOnWin",
+     "attribute": "Power",
+     "a": 2,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Hoard-Magic",
+     "desc": "+2 score per pot card when you claim the pot."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Solar_Archon",
+   "name": "Solar Archon",
+   "faction": "CelestialHost",
+   "rarity": "Epic",
+   "archetype": "holy",
+   "base": {
+    "age": 5000,
+    "power": 99,
+    "speed": 72,
+    "height": 382
+   },
+   "effective": {
+    "age": 5000,
+    "power": 94,
+    "speed": 72,
+    "height": 413
+   },
+   "strength": 0.8073,
+   "flavor": "His light is a legal document.",
+   "set_index": 9,
+   "lore": 86,
+   "abilities": [
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    },
+    {
+     "id": "ColossalProwess",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Power",
+     "a": 11,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Colossal Prowess",
+     "desc": "When Power is contested, add 11%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Choir_of_Quiet_Wings",
+   "name": "Choir of Quiet Wings",
+   "faction": "CelestialHost",
+   "rarity": "Uncommon",
+   "archetype": "balanced",
+   "base": {
+    "age": 83,
+    "power": 56,
+    "speed": 63,
+    "height": 207
+   },
+   "effective": {
+    "age": 83,
+    "power": 53,
+    "speed": 63,
+    "height": 224
+   },
+   "strength": 0.3624,
+   "flavor": "Sings the wounded to sleep, and the tired further on.",
+   "set_index": 10,
+   "lore": 87,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Morning_That_Judges",
+   "name": "The Morning That Judges",
+   "faction": "CelestialHost",
+   "rarity": "Epic",
+   "archetype": "elder",
+   "base": {
+    "age": 30000,
+    "power": 110,
+    "speed": 66,
+    "height": 450
+   },
+   "effective": {
+    "age": 30000,
+    "power": 105,
+    "speed": 66,
+    "height": 486
+   },
+   "strength": 0.8417,
+   "flavor": "Arrives at the end of every story, on time.",
+   "set_index": 11,
+   "lore": 88,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Goblin_Knifer",
+   "name": "Goblin Knifer",
+   "faction": "Beastwild",
+   "rarity": "Common",
+   "archetype": "vermin",
+   "base": {
+    "age": 24,
+    "power": 30,
+    "speed": 72,
+    "height": 95
+   },
+   "effective": {
+    "age": 24,
+    "power": 30,
+    "speed": 78,
+    "height": 87
+   },
+   "strength": 0.2362,
+   "flavor": "Six of him is a war party.",
+   "set_index": 1,
+   "lore": 89,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Warg_Rider",
+   "name": "Warg Rider",
+   "faction": "Beastwild",
+   "rarity": "Uncommon",
+   "archetype": "beast",
+   "base": {
+    "age": 58,
+    "power": 57,
+    "speed": 76,
+    "height": 186
+   },
+   "effective": {
+    "age": 58,
+    "power": 57,
+    "speed": 83,
+    "height": 172
+   },
+   "strength": 0.3578,
+   "flavor": "Two appetites, one direction.",
+   "set_index": 2,
+   "lore": 90,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Orc_War_Drummer",
+   "name": "Orc War Drummer",
+   "faction": "Beastwild",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 178,
+    "power": 58,
+    "speed": 48,
+    "height": 210
+   },
+   "effective": {
+    "age": 178,
+    "power": 58,
+    "speed": 52,
+    "height": 194
+   },
+   "strength": 0.3349,
+   "flavor": "Sets the pace. The pace is violence.",
+   "set_index": 3,
+   "lore": 91,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Skinchanger_of_the_Long_Winter",
+   "name": "Skinchanger of the Long Winter",
+   "faction": "Beastwild",
+   "rarity": "Common",
+   "archetype": "balanced",
+   "base": {
+    "age": 154,
+    "power": 67,
+    "speed": 68,
+    "height": 240
+   },
+   "effective": {
+    "age": 154,
+    "power": 67,
+    "speed": 74,
+    "height": 222
+   },
+   "strength": 0.5252,
+   "flavor": "Wears three shapes and a grudge.",
+   "set_index": 4,
+   "lore": 92,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Werewolf_Alpha",
+   "name": "Werewolf Alpha",
+   "faction": "Beastwild",
+   "rarity": "Epic",
+   "archetype": "beast",
+   "base": {
+    "age": 273,
+    "power": 86,
+    "speed": 88,
+    "height": 246
+   },
+   "effective": {
+    "age": 273,
+    "power": 86,
+    "speed": 96,
+    "height": 228
+   },
+   "strength": 0.6904,
+   "flavor": "The full moon is a formality.",
+   "set_index": 5,
+   "lore": 93,
+   "abilities": [
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Troll_of_the_Grey_Ford",
+   "name": "Troll of the Grey Ford",
+   "faction": "Beastwild",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 116,
+    "power": 64,
+    "speed": 34,
+    "height": 620
+   },
+   "effective": {
+    "age": 116,
+    "power": 64,
+    "speed": 37,
+    "height": 576
+   },
+   "strength": 0.4358,
+   "flavor": "Regrows an argument, and an arm.",
+   "set_index": 6,
+   "lore": 94,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Cave_Ogre",
+   "name": "Cave Ogre",
+   "faction": "Beastwild",
+   "rarity": "Uncommon",
+   "archetype": "brute",
+   "base": {
+    "age": 152,
+    "power": 76,
+    "speed": 38,
+    "height": 420
+   },
+   "effective": {
+    "age": 152,
+    "power": 76,
+    "speed": 41,
+    "height": 390
+   },
+   "strength": 0.4977,
+   "flavor": "Clubs, then improvises with the club.",
+   "set_index": 7,
+   "lore": 95,
+   "abilities": [
+    {
+     "id": "ColossalProwess",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Power",
+     "a": 11,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Colossal Prowess",
+     "desc": "When Power is contested, add 11%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Bog_Hag_of_the_Fen_Mother",
+   "name": "Bog Hag of the Fen-Mother",
+   "faction": "Beastwild",
+   "rarity": "Rare",
+   "archetype": "caster",
+   "base": {
+    "age": 600,
+    "power": 68,
+    "speed": 52,
+    "height": 220
+   },
+   "effective": {
+    "age": 600,
+    "power": 68,
+    "speed": 57,
+    "height": 204
+   },
+   "strength": 0.4885,
+   "flavor": "Curses are her only inheritance.",
+   "set_index": 8,
+   "lore": 96,
+   "abilities": [
+    {
+     "id": "GraveRite",
+     "effect": "OnWinForceExtraCapture",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Rare",
+     "name": "Grave-Rite",
+     "desc": "On a win, the opponent also loses their weakest card."
+    },
+    {
+     "id": "CursedRelic",
+     "effect": "AlwaysPenalty",
+     "attribute": "Power",
+     "a": -12,
+     "b": 0,
+     "min": "Common",
+     "name": "Cursed",
+     "desc": "Subtract 12% from every attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Mantikor_Prime",
+   "name": "Mantikor Prime",
+   "faction": "Beastwild",
+   "rarity": "Epic",
+   "archetype": "beast",
+   "base": {
+    "age": 627,
+    "power": 97,
+    "speed": 83,
+    "height": 283
+   },
+   "effective": {
+    "age": 627,
+    "power": 97,
+    "speed": 90,
+    "height": 262
+   },
+   "strength": 0.7959,
+   "flavor": "Lion, scorpion, and a very bad temper.",
+   "set_index": 9,
+   "lore": 97,
+   "abilities": [
+    {
+     "id": "Stormstride",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 9,
+     "b": 0,
+     "min": "Rare",
+     "name": "Stormstride",
+     "desc": "When Speed is contested, add +9."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Goblin_Saboteur",
+   "name": "Goblin Saboteur",
+   "faction": "Beastwild",
+   "rarity": "Common",
+   "archetype": "vermin",
+   "base": {
+    "age": 24,
+    "power": 28,
+    "speed": 79,
+    "height": 88
+   },
+   "effective": {
+    "age": 24,
+    "power": 28,
+    "speed": 86,
+    "height": 81
+   },
+   "strength": 0.2477,
+   "flavor": "Tunnels under the siege, out the other side of the war.",
+   "set_index": 10,
+   "lore": 98,
+   "abilities": []
+  },
+  {
+   "id": "FCB_The_Long_Winter_s_Son",
+   "name": "The Long Winter's Son",
+   "faction": "Beastwild",
+   "rarity": "Epic",
+   "archetype": "beast",
+   "base": {
+    "age": 4000,
+    "power": 109,
+    "speed": 91,
+    "height": 345
+   },
+   "effective": {
+    "age": 4000,
+    "power": 109,
+    "speed": 99,
+    "height": 320
+   },
+   "strength": 0.8876,
+   "flavor": "Winter's only heir, and he is early.",
+   "set_index": 11,
+   "lore": 99,
+   "abilities": [
+    {
+     "id": "GiantSlayer",
+     "effect": "BonusIfOpponentStatAbove",
+     "attribute": "Height",
+     "a": 18,
+     "b": 300,
+     "min": "Uncommon",
+     "name": "Giant-Slayer",
+     "desc": "+18% when the opponent's Height is above 300 cm."
+    },
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Tidepool_Scout",
+   "name": "Tidepool Scout",
+   "faction": "DeepwaterCourt",
+   "rarity": "Common",
+   "archetype": "swift",
+   "base": {
+    "age": 37,
+    "power": 40,
+    "speed": 72,
+    "height": 110
+   },
+   "effective": {
+    "age": 40,
+    "power": 37,
+    "speed": 72,
+    "height": 110
+   },
+   "strength": 0.2454,
+   "flavor": "Small, salt, everywhere.",
+   "set_index": 1,
+   "lore": 100,
+   "abilities": [
+    {
+     "id": "Surefooted",
+     "effect": "FlatBonusOnAttribute",
+     "attribute": "Speed",
+     "a": 5,
+     "b": 0,
+     "min": "Common",
+     "name": "Surefooted",
+     "desc": "When Speed is contested, add +5."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Merrow_Spearwife",
+   "name": "Merrow Spearwife",
+   "faction": "DeepwaterCourt",
+   "rarity": "Common",
+   "archetype": "balanced",
+   "base": {
+    "age": 76,
+    "power": 49,
+    "speed": 61,
+    "height": 180
+   },
+   "effective": {
+    "age": 83,
+    "power": 46,
+    "speed": 61,
+    "height": 180
+   },
+   "strength": 0.2729,
+   "flavor": "Trades surface trinkets for surface secrets.",
+   "set_index": 2,
+   "lore": 101,
+   "abilities": []
+  },
+  {
+   "id": "FCB_Reef_Lurker",
+   "name": "Reef Lurker",
+   "faction": "DeepwaterCourt",
+   "rarity": "Common",
+   "archetype": "brute",
+   "base": {
+    "age": 77,
+    "power": 60,
+    "speed": 45,
+    "height": 260
+   },
+   "effective": {
+    "age": 84,
+    "power": 57,
+    "speed": 45,
+    "height": 260
+   },
+   "strength": 0.3509,
+   "flavor": "Ambush is a tide like any other.",
+   "set_index": 3,
+   "lore": 102,
+   "abilities": [
+    {
+     "id": "Thickhide",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 8,
+     "b": 0,
+     "min": "Common",
+     "name": "Thick Hide",
+     "desc": "While defending, add 8% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Sharkwere_of_the_Brine_Moon",
+   "name": "Sharkwere of the Brine Moon",
+   "faction": "DeepwaterCourt",
+   "rarity": "Uncommon",
+   "archetype": "beast",
+   "base": {
+    "age": 101,
+    "power": 71,
+    "speed": 86,
+    "height": 213
+   },
+   "effective": {
+    "age": 110,
+    "power": 67,
+    "speed": 86,
+    "height": 213
+   },
+   "strength": 0.5115,
+   "flavor": "Half sailor, half fin, all grudge.",
+   "set_index": 4,
+   "lore": 103,
+   "abilities": [
+    {
+     "id": "FirstCharge",
+     "effect": "PercentBonusWhenLeading",
+     "attribute": "Power",
+     "a": 10,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "First Charge",
+     "desc": "While leading, add 10% to the contested attribute."
+    },
+    {
+     "id": "GiantSlayer",
+     "effect": "BonusIfOpponentStatAbove",
+     "attribute": "Height",
+     "a": 18,
+     "b": 300,
+     "min": "Uncommon",
+     "name": "Giant-Slayer",
+     "desc": "+18% when the opponent's Height is above 300 cm."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Kraken_of_the_Trench_Throne",
+   "name": "Kraken of the Trench Throne",
+   "faction": "DeepwaterCourt",
+   "rarity": "Epic",
+   "archetype": "titan",
+   "base": {
+    "age": 1298,
+    "power": 100,
+    "speed": 35,
+    "height": 3200
+   },
+   "effective": {
+    "age": 1415,
+    "power": 95,
+    "speed": 35,
+    "height": 3200
+   },
+   "strength": 0.7018,
+   "flavor": "Nine arms, nine ledgers, no forgiveness.",
+   "set_index": 5,
+   "lore": 104,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "HoardersGreed",
+     "effect": "OnWinTakeDeckTop",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Hoarder's Greed",
+     "desc": "On a win, also take the top card of the deck."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Drowned_King",
+   "name": "Drowned King",
+   "faction": "DeepwaterCourt",
+   "rarity": "Epic",
+   "archetype": "undead",
+   "base": {
+    "age": 2400,
+    "power": 84,
+    "speed": 44,
+    "height": 230
+   },
+   "effective": {
+    "age": 2616,
+    "power": 80,
+    "speed": 44,
+    "height": 230
+   },
+   "strength": 0.5573,
+   "flavor": "Rules a kingdom of silt and receipts.",
+   "set_index": 6,
+   "lore": 105,
+   "abilities": [
+    {
+     "id": "ElderMemory",
+     "effect": "WinsTiesOnAttribute",
+     "attribute": "Age",
+     "a": 0,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Elder Memory",
+     "desc": "You win ties on Age."
+    },
+    {
+     "id": "Undying",
+     "effect": "OnLoseReturnToHandOnce",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Undying",
+     "desc": "Once per match, this card returns to your hand instead of being captured."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Sea_Serpent_of_the_Cold_Vein",
+   "name": "Sea Serpent of the Cold Vein",
+   "faction": "DeepwaterCourt",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 573,
+    "power": 87,
+    "speed": 48,
+    "height": 2600
+   },
+   "effective": {
+    "age": 625,
+    "power": 83,
+    "speed": 48,
+    "height": 2600
+   },
+   "strength": 0.6674,
+   "flavor": "Twelve miles long, according to the sailors who survived.",
+   "set_index": 7,
+   "lore": 106,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    },
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Pearlbound_Oracle",
+   "name": "Pearlbound Oracle",
+   "faction": "DeepwaterCourt",
+   "rarity": "Common",
+   "archetype": "caster",
+   "base": {
+    "age": 520,
+    "power": 52,
+    "speed": 46,
+    "height": 196
+   },
+   "effective": {
+    "age": 567,
+    "power": 49,
+    "speed": 46,
+    "height": 196
+   },
+   "strength": 0.3303,
+   "flavor": "Speaks only in tides. Always right, always late.",
+   "set_index": 8,
+   "lore": 107,
+   "abilities": [
+    {
+     "id": "DeepRoots",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Age",
+     "a": 15,
+     "b": 0,
+     "min": "Common",
+     "name": "Deep Roots",
+     "desc": "When Age is contested, add 15%."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Coral_Golem",
+   "name": "Coral Golem",
+   "faction": "DeepwaterCourt",
+   "rarity": "Uncommon",
+   "archetype": "titan",
+   "base": {
+    "age": 212,
+    "power": 74,
+    "speed": 22,
+    "height": 680
+   },
+   "effective": {
+    "age": 231,
+    "power": 70,
+    "speed": 22,
+    "height": 680
+   },
+   "strength": 0.4817,
+   "flavor": "A reef that decided to walk.",
+   "set_index": 9,
+   "lore": 108,
+   "abilities": [
+    {
+     "id": "TitanGirth",
+     "effect": "PercentBonusOnAttribute",
+     "attribute": "Height",
+     "a": 14,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Titan Girth",
+     "desc": "When Height is contested, add 14%."
+    },
+    {
+     "id": "BulwarkOath",
+     "effect": "PercentBonusWhenDefending",
+     "attribute": "Power",
+     "a": 12,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Bulwark Oath",
+     "desc": "While defending, add 12% to the contested attribute."
+    }
+   ]
+  },
+  {
+   "id": "FCB_Abyssal_Siren",
+   "name": "Abyssal Siren",
+   "faction": "DeepwaterCourt",
+   "rarity": "Rare",
+   "archetype": "swift",
+   "base": {
+    "age": 124,
+    "power": 65,
+    "speed": 79,
+    "height": 177
+   },
+   "effective": {
+    "age": 135,
+    "power": 61,
+    "speed": 79,
+    "height": 177
+   },
+   "strength": 0.445,
+   "flavor": "Her song has a clause.",
+   "set_index": 10,
+   "lore": 109,
+   "abilities": [
+    {
+     "id": "FeyTrickery",
+     "effect": "WinIfMarginWithin",
+     "attribute": "Power",
+     "a": 7,
+     "b": 0,
+     "min": "Rare",
+     "name": "Fey Trickery",
+     "desc": "When defending, lose by 7% or less and you win instead."
+    }
+   ]
+  },
+  {
+   "id": "FCB_The_Tide_That_Keeps",
+   "name": "The Tide That Keeps",
+   "faction": "DeepwaterCourt",
+   "rarity": "Epic",
+   "archetype": "elder",
+   "base": {
+    "age": 16000,
+    "power": 107,
+    "speed": 58,
+    "height": 900
+   },
+   "effective": {
+    "age": 17440,
+    "power": 102,
+    "speed": 58,
+    "height": 900
+   },
+   "strength": 0.8096,
+   "flavor": "It takes the ships and keeps the names.",
+   "set_index": 11,
+   "lore": 110,
+   "abilities": [
+    {
+     "id": "HoardMagic",
+     "effect": "PotScoreBonusOnWin",
+     "attribute": "Power",
+     "a": 2,
+     "b": 0,
+     "min": "Uncommon",
+     "name": "Hoard-Magic",
+     "desc": "+2 score per pot card when you claim the pot."
+    },
+    {
+     "id": "Spellbreak",
+     "effect": "NullifyOpponentAbilities",
+     "attribute": "Power",
+     "a": 0,
+     "b": 0,
+     "min": "Epic",
+     "name": "Spellbreak",
+     "desc": "The opponent's abilities do nothing this round."
+    }
+   ]
+  }
+ ]
+}

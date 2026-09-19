@@ -1,0 +1,23 @@
+# Build output / IDE
+Binaries/
+Intermediate/
+Saved/
+Build/
+DerivedDataCache/
+.idea/
+.vs/
+*.sln
+*.vcxproj*
+*.opensdf
+*.suo
+*.db
+*.opendb
+Art/Exports/
+
+# Generator scratch
+Tools/__pycache__/
+*.pyc
+.DS_Store
+
+# Arena workspace artifacts
+.arena-probe.txt

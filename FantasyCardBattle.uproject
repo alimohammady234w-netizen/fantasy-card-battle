@@ -1,0 +1,38 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.8",
+    "Category": "Games",
+    "Description": "A fantasy card battle game (Top Trumps style) for PC, Steam and Android. 2-player gameplay with an AI opponent, 110 fantasy cards with unique attributes (Age, Power, Speed, Height) and data-driven card abilities.",
+    "Modules": [
+        {
+            "Name": "FantasyCardBattle",
+            "Type": "Runtime",
+            "LoadingPhase": "Default",
+            "AdditionalDependencies": [
+                "Engine"
+            ]
+        }
+    ],
+    "Plugins": [
+        {
+            "Name": "EnhancedInput",
+            "Enabled": true
+        },
+        {
+            "Name": "UserActivityTracking",
+            "Enabled": false
+        },
+        {
+            "Name": "OnlineSubsystemSteam",
+            "Enabled": false
+        },
+        {
+            "Name": "PythonScriptPlugin",
+            "Enabled": true
+        }
+    ],
+    "TargetPlatforms": [
+        "Windows",
+        "Android"
+    ]
+}

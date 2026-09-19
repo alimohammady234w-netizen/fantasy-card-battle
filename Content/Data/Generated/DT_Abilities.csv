@@ -1,0 +1,25 @@
+Name,AbilityId,DisplayName,Description,Effect,Attribute,DefaultParamA,DefaultParamB,Faction,MinRarity
+AncientBlood,AncientBlood,Ancient Blood,You win ties on Age.,WinsTiesOnAttribute,Age,0,0,,Common
+BaneOfDragons,BaneOfDragons,Dragon-Bane,+16% against Dragonkind.,BonusAgainstFaction,Power,16,0,Dragonkind,Rare
+BaneOfTheAbyss,BaneOfTheAbyss,Hell-Bane,+18% against the Abyssal Horde.,BonusAgainstFaction,Power,18,0,AbyssalHorde,Epic
+BaneOfTheDead,BaneOfTheDead,Death-Bane,+16% against the Undying Legion.,BonusAgainstFaction,Power,16,0,UndyingLegion,Rare
+BulwarkOath,BulwarkOath,Bulwark Oath,"While defending, add 12% to the contested attribute.",PercentBonusWhenDefending,Power,12,0,,Uncommon
+ColossalProwess,ColossalProwess,Colossal Prowess,"When Power is contested, add 11%.",PercentBonusOnAttribute,Power,11,0,,Uncommon
+CursedRelic,CursedRelic,Cursed,Subtract 12% from every attribute.,AlwaysPenalty,Power,-12,0,,Common
+DeepRoots,DeepRoots,Deep Roots,"When Age is contested, add 15%.",PercentBonusOnAttribute,Age,15,0,,Common
+ElderMemory,ElderMemory,Elder Memory,You win ties on Age.,WinsTiesOnAttribute,Age,0,0,,Uncommon
+EmberFury,EmberFury,Ember Fury,"When Power is contested, add +9.",FlatBonusOnAttribute,Power,9,0,,Rare
+FeyTrickery,FeyTrickery,Fey Trickery,"When defending, lose by 7% or less and you win instead.",WinIfMarginWithin,Power,7,0,,Rare
+FirstCharge,FirstCharge,First Charge,"While leading, add 10% to the contested attribute.",PercentBonusWhenLeading,Power,10,0,,Uncommon
+GiantSlayer,GiantSlayer,Giant-Slayer,+18% when the opponent's Height is above 300 cm.,BonusIfOpponentStatAbove,Height,18,300,,Uncommon
+GraveRite,GraveRite,Grave-Rite,"On a win, the opponent also loses their weakest card.",OnWinForceExtraCapture,Power,0,0,,Rare
+HoardMagic,HoardMagic,Hoard-Magic,+2 score per pot card when you claim the pot.,PotScoreBonusOnWin,Power,2,0,,Uncommon
+HoardersGreed,HoardersGreed,Hoarder's Greed,"On a win, also take the top card of the deck.",OnWinTakeDeckTop,Power,0,0,,Epic
+Oathkeeper,Oathkeeper,Oathkeeper,"Add 4% per allied trophy in your pile, to 6 trophies.",BonusPerFactionInOwnPile,Power,4,6,,Rare
+Slaughtering,Slaughtering,Slaughtering,"When Power is contested, add +5.",FlatBonusOnAttribute,Power,5,0,,Common
+Spellbreak,Spellbreak,Spellbreak,The opponent's abilities do nothing this round.,NullifyOpponentAbilities,Power,0,0,,Epic
+Stormstride,Stormstride,Stormstride,"When Speed is contested, add +9.",FlatBonusOnAttribute,Speed,9,0,,Rare
+Surefooted,Surefooted,Surefooted,"When Speed is contested, add +5.",FlatBonusOnAttribute,Speed,5,0,,Common
+Thickhide,Thickhide,Thick Hide,"While defending, add 8% to the contested attribute.",PercentBonusWhenDefending,Power,8,0,,Common
+TitanGirth,TitanGirth,Titan Girth,"When Height is contested, add 14%.",PercentBonusOnAttribute,Height,14,0,,Uncommon
+Undying,Undying,Undying,"Once per match, this card returns to your hand instead of being captured.",OnLoseReturnToHandOnce,Power,0,0,,Epic
