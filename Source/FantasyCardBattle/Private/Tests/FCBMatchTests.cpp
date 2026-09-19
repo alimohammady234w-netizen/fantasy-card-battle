@@ -269,6 +269,78 @@ bool FFCBCardConservationTest::RunTest(const FString& Parameters)
 	return true;
 }
 
+/** ------------------------------------------------------------- ini absorption -------------------------------- */
+
+/**
+ * The project is playable with an empty Content folder because Config/DefaultGame.ini configures the class
+ * default objects. That only holds while the UPROPERTY names in the header still match the ini keys and the
+ * config flags are intact, and a broken link there fails *silently*: the game boots, the tuning just is not
+ * there. So the seam is tested from the engine side, where the ini is actually applied (the headless harness
+ * has no config system at all).
+ *
+ * An ini line whose value equals the C++ default is unprovable from a test, and this one does not try. The
+ * signal used is the AI profile array, which is empty unless the ini filled it.
+ */
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFCBIniConfigIsAbsorbedTest,
+	"FantasyCardBattle.Data.IniConfigIsAbsorbed",
+	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+
+bool FFCBIniConfigIsAbsorbedTest::RunTest(const FString& Parameters)
+{
+	const UFCBAiProfileAsset* Profiles = GetDefault<UFCBAiProfileAsset>();
+
+	// Empty here means DefaultGame.ini's [/Script/FantasyCardBattle.FCBAiProfileAsset] section, the class name,
+	// or the config flags on FFCBAiProfileRow's properties stopped matching - and nothing else would notice.
+	if (TestTrue(TEXT("DefaultGame.ini filled the AI profile table"), Profiles->Profiles.Num() >= 4))
+	{
+		int32 PreviousElo = -1;
+		int32 PreviousPly = -1;
+		for (const FFCBAiProfileRow& Row : Profiles->Profiles)
+		{
+			const FString Label = FString::Printf(TEXT("%s row"),
+				*StaticEnum<EFCBAiDifficulty>()->GetNameStringByValue(static_cast<int64>(Row.Difficulty)));
+			TestTrue(Label + TEXT(" has an Elo"), Row.Elo > PreviousElo);
+			TestTrue(Label + TEXT(" is not shallower than the tier before"), Row.SearchPly >= PreviousPly);
+			PreviousElo = Row.Elo;
+			PreviousPly = Row.SearchPly;
+		}
+
+		// Ordering, not the values themselves: retuning Elo ratings must not break this test.
+		const int32 FirstTier = static_cast<int32>(Profiles->Profiles[0].Difficulty);
+		const int32 SecondTier = static_cast<int32>(Profiles->Profiles[1].Difficulty);
+		if (Profiles->Profiles.Num() >= 2 && FirstTier >= SecondTier)
+		{
+			AddError(TEXT("AI profile rows are not ordered by difficulty; FindRow would return the wrong preset"));
+		}
+	}
+
+	// The layering has to survive the round trip: preset, then ini row on top.
+	for (EFCBAiDifficulty Difficulty : { EFCBAiDifficulty::Novice, EFCBAiDifficulty::Adept,
+		EFCBAiDifficulty::Expert, EFCBAiDifficulty::Legendary })
+	{
+		FFCBAiProfile Resolved;
+		UFCBAiProfileAsset::Resolve(nullptr, Difficulty, Resolved);
+
+		FFCBAiProfileRow Row;
+		if (Profiles->FindRow(Difficulty, Row))
+		{
+			const FString Label = FString::Printf(TEXT("%s resolves from the ini row"),
+				*StaticEnum<EFCBAiDifficulty>()->GetNameStringByValue(static_cast<int64>(Difficulty)));
+			TestEqual(Label + TEXT(" Elo"), Resolved.Elo, Row.Elo);
+			TestEqual(Label + TEXT(" blunder chance"), Resolved.BlunderPercent, Row.BlunderChancePercent);
+		}
+
+		TestTrue(TEXT("difficulty always resolves to a usable profile"), Resolved.RolloutSamples >= 0);
+	}
+
+	const UFCBMatchRulesAsset* Rules = GetDefault<UFCBMatchRulesAsset>();
+	TestTrue(TEXT("hand size is in the playable range"), Rules->DefaultHandSize >= 6 && Rules->DefaultHandSize <= 24);
+	TestTrue(TEXT("round cap is a safety net, not the end condition"), Rules->DefaultMaxRounds >= 64);
+	TestTrue(TEXT("pot cap leaves room for a real swing"), Rules->DefaultPotCap >= 4 && Rules->DefaultPotCap <= 40);
+
+	return true;
+}
+
 /** --------------------------------------------------------------- ui helpers ------------------------------- */
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(FFCBUiFormattingTest,

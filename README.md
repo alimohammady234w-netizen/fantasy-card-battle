@@ -52,7 +52,7 @@ Source/FantasyCardBattle/Public|Private/
   FCBDataAssets.*       DataTable row structs, rules asset, project settings, AI profile asset
   FCBGameInstance.*     owns database + match + AI; the only API widgets and the HUD talk to
   FCBGameMode.*         GameMode, PlayerController, code-only debug HUD
-  Private/Tests/        in-engine automation tests
+  Private/Tests/        six in-engine automation tests (list in Docs/Setup.md)
 Content/Data/Generated/ the shipped data: DT_Cards.csv, DT_Factions.csv, DT_Abilities.csv, cards.json
 Content/Python/         import_content.py - CSVs to DataTables, data assets and the arena level
 Tools/card_catalog.py   authored data: factions, bands, archetypes, abilities, the 110-card list

@@ -98,6 +98,49 @@ The split that matters: `FCBTypes.h`, `FCBCardDatabase.*`, `FCBMatchRules.*`, `F
 header that the mock shim cannot provide. `FCBDataAssets.*` and up are Unreal-only. If you need a rule
 visible in both, it belongs in the resolver, not in the widget layer.
 
+## Tests
+
+**Headless, no engine** - `Tools/mock_build.sh run`: 177 checks over the shipped CSVs (loader, validator,
+coverage floors, rarity ladder, tie rules, every ability effect, the AI tiers, determinism). This is what
+`Docs/Balance.md` numbers come from.
+
+**In-engine** - Session Frontend > Automation Control, or from CI:
+
+```
+UnrealEditor-Cmd FantasyCardBattle.uproject -ExecCmds="Automation RunTests FantasyCardBattle;Quit" -unattended -nullrhi -log
+```
+
+| Test | What it pins |
+|------|--------------|
+| `FantasyCardBattle.Data.GeneratedDataIsValid` | the shipped CSVs load with zero fatal validator issues. Missing data is `AddWarning` + pass, so CI can build before it runs the generator |
+| `FantasyCardBattle.Data.RulesAssetRoundTrip` | DataTable rows go through the same loader, validator and derived stats as the CSV path |
+| `FantasyCardBattle.Data.IniConfigIsAbsorbed` | `Config/DefaultGame.ini` really reaches the class default objects. Probed through the AI profile array, which is empty unless the ini filled it - the one seam the headless harness cannot see, because it has no config system |
+| `FantasyCardBattle.Match.SameSeedPlaysTheSameMatch` | seed + config replays a match byte for byte |
+| `FantasyCardBattle.Match.CardsAreAlwaysAccountedFor` | deck + pot + burned + both hands + both piles equals the pool size after *every* round of four full matches |
+| `FantasyCardBattle.Ui.NumberAndColourFormatting` | the number and `#RRGGBB` helpers the HUD and widgets share |
+
+## First build on a fresh machine
+
+1. Install **Unreal Engine 5.8** (Epic Games launcher; the Android toolchain only when you actually want to
+   package for a phone).
+2. `python3 Tools/generate_cards.py` in the repo root, so `Content/Data/Generated/` is not empty.
+3. Right-click `FantasyCardBattle.uproject` -> **Generate Visual Studio project files**, then build the
+   **FantasyCardBattleEditor** target in **Development Editor**. (On a Mac/Linux host the equivalent is
+   `RunUBT.sh -projectfiles` and `FantasyCardBattleEditor -Development -TargetType=Editor`.)
+4. Open the `.uproject`. If the editor complains that `/Game/Maps/L_FCB_Arena` does not exist, that is expected
+   on a fresh checkout: create nothing, just open any level or an empty one - the project's
+   `GlobalDefaultGameMode` is what matters, not the map.
+5. Press Play. You should see the table drawn by `AFCBDebugHud`, your 12 cards, and `data: Content/Data/Generated:
+   110 cards` on the F1 overlay. If it says `DEBUG POOL`, the CSV folder was not found (step 2, or the
+   `CardDataDirectory` setting).
+6. Run `FantasyCardBattle` in the Session Frontend. Six tests, all green.
+7. Only if you want editor assets: `python3 Content/Python/import_content.py` from inside the editor
+   (Content Browser > Content/Python > right-click > Run Script). Restart the editor afterwards so the new
+   `/Game/Data/DT_*` assets are picked up by the rules asset.
+8. Package for Windows when the above is green. Remember `Content/Data/Generated` in
+   *Project Settings > Packaging > Additional Non-Asset Directories to Copy* if you are shipping the CSV path
+   rather than cooked DataTables.
+
 ## Console commands and debugging
 
 | Command | Effect |

@@ -254,38 +254,45 @@ public:
 
 /** ---------------------------------------------------------------- AI profiles -------------------------------- */
 
-/** One row of the AI ladder. Field names match Config/DefaultGame.ini's +Profiles entries. */
+/**
+ * One row of the AI ladder. Field names match Config/DefaultGame.ini's +Profiles entries.
+ *
+ * Every property here is marked config on purpose: an array of structs is read out of the ini by serialising
+ * the struct's *own* properties, and the config archive skips anything without CPF_Config. Drop the flag and
+ * DefaultGame.ini's +Profiles lines stop loading silently - the game still runs, it just ignores the shipped
+ * tuning. FantasyCardBattle.Data.IniConfigIsAbsorbed is the test that catches that.
+ */
 USTRUCT(BlueprintType)
 struct FANTASYCARDBATTLE_API FFCBAiProfileRow
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI")
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI")
 	EFCBAiDifficulty Difficulty = EFCBAiDifficulty::Adept;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI")
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI")
 	int32 Elo = 1200;
 
 	/** Depth of the opponent-reply rollout (0 = none, 1 = Expert behaviour, 2 = Legendary). */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0", ClampMax = "4"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0", ClampMax = "4"))
 	int32 SearchPly = 0;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0", ClampMax = "100"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0", ClampMax = "100"))
 	int32 BlunderChancePercent = 0;
 
 	/** Soft frame budget. Drives the UI think delay; the engine never clocks itself against wall time. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI", meta = (ClampMin = "0"))
 	int32 TimeBudgetMs = 0;
 
 	/** Leave at -1 to inherit the preset; set to tune a single knob without copying the whole profile. */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
 	float CardQualityWeightOverride = -1.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
 	float RiskAversionOverride = -1.f;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "AI (overrides)", meta = (ClampMin = "-1", ClampMax = "4"))
 	float PotValueWeightOverride = -1.f;
 
 	/** Fills InOutProfile from this row on top of the hard-coded preset for the same difficulty. */
