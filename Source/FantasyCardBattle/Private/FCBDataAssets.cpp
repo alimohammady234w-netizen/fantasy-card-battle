@@ -279,11 +279,6 @@ const UFCBSettings& UFCBSettings::Get()
 	return *GetDefault<UFCBSettings>();
 }
 
-FName UFCBSettings::GetSectionName() const
-{
-	return TEXT("Fantasy Card Battle");
-}
-
 /** ---------------------------------------------------------------- AI profiles -------------------------------- */
 
 void FFCBAiProfileRow::ApplyTo(FFCBAiProfile& InOutProfile) const

@@ -245,11 +245,14 @@ public:
 	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Data")
 	FString CardDataDirectory = TEXT("Content/Data/Generated");
 
+	/**
+	 * The class default object, which is what Config/DefaultGame.ini configures.
+	 *
+	 * No GetSectionName() override: on UDeveloperSettings that virtual is editor-only, and an override that
+	 * disappears between a Development Editor and a Shipping build is a build break for a string that the
+	 * UCLASS DisplayName metadata already provides in the Project Settings UI.
+	 */
 	static const UFCBSettings& Get();
-
-	//~ Begin UDeveloperSettings interface
-	virtual FName GetSectionName() const override;
-	//~ End UDeveloperSettings interface
 };
 
 /** ---------------------------------------------------------------- AI profiles -------------------------------- */
