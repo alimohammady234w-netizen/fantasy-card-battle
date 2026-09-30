@@ -110,6 +110,48 @@ struct FMath
 };
 
 // ---------------------------------------------------------------------------
+// FVector2D
+// ---------------------------------------------------------------------------
+//
+// Unreal ships FVector2D in Core (Math/Vector2D.h, pulled in by CoreMinimal.h), so the touch/layout
+// module is allowed to use it. Only the members the layout maths actually calls are implemented here.
+
+struct FVector2D
+{
+	float X = 0.f;
+	float Y = 0.f;
+
+	FVector2D() = default;
+	FVector2D(float InX, float InY) : X(InX), Y(InY) {}
+
+	static const FVector2D ZeroVector;
+
+	FVector2D operator+(const FVector2D& Other) const { return FVector2D(X + Other.X, Y + Other.Y); }
+	FVector2D operator-(const FVector2D& Other) const { return FVector2D(X - Other.X, Y - Other.Y); }
+	FVector2D operator*(float Scale) const { return FVector2D(X * Scale, Y * Scale); }
+	FVector2D operator/(float Scale) const { return FVector2D(X / Scale, Y / Scale); }
+	FVector2D& operator+=(const FVector2D& Other) { X += Other.X; Y += Other.Y; return *this; }
+	FVector2D& operator-=(const FVector2D& Other) { X -= Other.X; Y -= Other.Y; return *this; }
+
+	bool operator==(const FVector2D& Other) const { return X == Other.X && Y == Other.Y; }
+	bool operator!=(const FVector2D& Other) const { return !(*this == Other); }
+
+	/** UE spells it Size(); GetLength() is the older alias. */
+	float Size() const { return std::sqrt(X * X + Y * Y); }
+	float SizeSquared() const { return X * X + Y * Y; }
+	float GetLength() const { return Size(); }
+	bool IsNearlyZero(float Tolerance = 1e-4f) const { return std::fabs(X) <= Tolerance && std::fabs(Y) <= Tolerance; }
+
+	FVector2D GetAbs() const { return FVector2D(std::fabs(X), std::fabs(Y)); }
+	FVector2D GetRotated(float) const { return *this; } // unused by the layout maths
+};
+
+inline const FVector2D FVector2D::ZeroVector(0.f, 0.f);
+
+/** UE: FVector2D::Distance. */
+inline float Distance(const FVector2D& A, const FVector2D& B) { return (A - B).Size(); }
+
+// ---------------------------------------------------------------------------
 // FString / FName
 // ---------------------------------------------------------------------------
 
@@ -165,6 +207,9 @@ struct FString
 
 	/** UE: FString::FromInt, used by the number formatting helpers. */
 	static FString FromInt(int32 InValue) { return FString(std::to_string(InValue)); }
+
+	bool Contains(const TCHAR* Needle) const { return Needle && S.find(Needle) != std::string::npos; }
+	bool Contains(const FString& Needle) const { return S.find(Needle.S) != std::string::npos; }
 
 	FString ToString() const { return *this; }
 

@@ -13,6 +13,7 @@
 #include "FCBAiAgent.h"
 #include "FCBCardDatabase.h"
 #include "FCBMatchRules.h"
+#include "FCBTouch.h"
 
 #include <cstdio>
 #include <cstring>
@@ -171,6 +172,505 @@ namespace
 	// ---------------------------------------------------------------------------
 	// Tests
 	// ---------------------------------------------------------------------------
+
+	// ---------------------------------------------------------------------------
+	// Mobile layout / input harness
+	//
+	// The touch layer is engine-free on purpose, so the same file the phone build runs can be pressed here.
+	// What follows covers the four questions that decide whether the mobile build is playable:
+	//   1. does the grid fit the hand without hiding cards or shrinking a control past a fingertip,
+	//   2. is every card + attribute reachable, on every page, with the coordinates a finger would hit,
+	//   3. do swipe / hold / tap classify correctly at the thresholds,
+	//   4. does a tap ever do something the player did not ask for (the AI's turn, the end screen, the peek).
+	// ---------------------------------------------------------------------------
+
+	/** A viewport to test against. Scale is the device DPI scale the game layer reads from Slate. */
+	struct FTestDevice
+	{
+		const TCHAR* Name;
+		float Width;
+		float Height;
+		float DpiScale;
+		bool bTouch;
+	};
+
+	/** 48 dp is the Material target, 44 dp Apple's; both land at MinTarget = 48 * scale here. */
+	FCBTouch::FTuning MakeTuning(float DpiScale)
+	{
+		FCBTouch::FTuning Tuning;
+		Tuning.MinTarget = FMath::Clamp(48.f * DpiScale, 32.f, 220.f);
+		return Tuning;
+	}
+
+	FCBTouch::FSafeArea MakeSafeArea(const FTestDevice& Device)
+	{
+		return FCBTouch::FallbackSafeArea(Device.bTouch);
+	}
+
+	FCBTouch::FState MakeState(int32 HandCount, int32 Page = 0, int32 Selected = 0,
+		bool bMatchOver = false, bool bCanPlay = true, bool bPeek = false)
+	{
+		FCBTouch::FState State;
+		State.HandCount = HandCount;
+		State.PageIndex = Page;
+		State.SelectedCardIndex = Selected;
+		State.SelectedAttribute = EFCBAttribute::Power;
+		State.bMatchOver = bMatchOver;
+		State.bCanPlay = bCanPlay;
+		State.bPeekActive = bPeek;
+		return State;
+	}
+
+	const FTestDevice GDevices[] =
+	{
+		{ TEXT("phone 20:9  2400x1080"),	2400.f, 1080.f, 3.f,	true },
+		{ TEXT("phone 16:9  1920x1080"),	1920.f, 1080.f, 3.f,	true },
+		{ TEXT("phone small 1280x720"),		1280.f,  720.f, 2.f,	true },
+		{ TEXT("tablet      2560x1600"),	2560.f, 1600.f, 2.f,	true },
+		{ TEXT("old 480p      854x480"),	 854.f,  480.f, 1.5f,	true },
+		{ TEXT("desktop     1920x1080"),	1920.f, 1080.f, 1.f,	false },
+		{ TEXT("editor window 1100x700"),	1100.f,  700.f, 1.f,	false },
+	};
+
+	FCB_TEST(TestTouchLayoutFitsEveryTarget)
+	{
+		for (const FTestDevice& Device : GDevices)
+		{
+			const FCBTouch::FTuning Tuning = MakeTuning(Device.DpiScale);
+			const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(
+				FVector2D(Device.Width, Device.Height), MakeSafeArea(Device), MakeState(12), Tuning);
+
+			std::printf("  %-24s %s\n", Device.Name, *Layout.Note);
+
+			EXPECT(Layout.VisibleCards > 0);
+			EXPECT(Layout.Grid.Columns >= 1 && Layout.Grid.Columns <= Tuning.MaxHandColumns);
+			EXPECT(Layout.Grid.CardHeight > 0.f);
+
+			// Nothing may be drawn or hit outside the safe area: the Android gesture bar eats the bottom row.
+			EXPECT(Layout.SafeRect.Width() > 0.f && Layout.SafeRect.Height() > 0.f);
+			EXPECT(Layout.HandRegion.Bottom <= Layout.SafeRect.Bottom + 0.5f);
+			EXPECT(Layout.DetailPanel.Right <= Layout.SafeRect.Right + 0.5f);
+			EXPECT(Layout.PlayButton.Bottom <= Layout.SafeRect.Bottom + 0.5f);
+
+			// Every visible card has four value cells and a name strip, none of them empty or overlapping.
+			for (int32 Index = 0; Index < Layout.VisibleCards; ++Index)
+			{
+				const FCBTouch::FRect Row = Layout.CardRect(Index);
+				EXPECT(!Row.IsEmpty());
+				EXPECT(Row.Bottom <= Layout.HandRegion.Bottom + 0.5f);
+				EXPECT(Row.Right <= Layout.HandRegion.Right + 0.5f);
+				EXPECT(Row.Height() >= Tuning.MinTarget * Tuning.CompactTolerance - 0.5f);
+
+				float ExpectedLeft = Row.Left + Layout.NameWidth;
+				for (int32 Cell = 0; Cell < 4; ++Cell)
+				{
+					const FCBTouch::FRect Stat = Layout.StatRect(Index, FCBTouch::AttributeFromCellIndex(Cell));
+					EXPECT(!Stat.IsEmpty());
+					EXPECT(Stat.Height() >= Tuning.MinTarget * Tuning.CompactTolerance - 0.5f);
+					EXPECT(Stat.Width() >= Tuning.MinTarget * Tuning.MinStatCellWidthFraction - 1.f);
+					EXPECT(FMath::Abs(Stat.Left - ExpectedLeft) < 1.f);
+					// The four cells must tile the row: no gap a tap can fall into, no overlap.
+					ExpectedLeft = Stat.Right;
+				}
+				EXPECT(FMath::Abs(ExpectedLeft - Row.Right) < 1.f);
+
+				// Cards never overlap each other.
+				if (Index > 0)
+				{
+					EXPECT(!Layout.CardRect(Index).Intersects(Layout.CardRect(Index - 1)));
+				}
+			}
+		}
+	}
+
+	FCB_TEST(TestTouchEveryCardAndAttributeIsReachable)
+	{
+		for (const FTestDevice& Device : GDevices)
+		{
+			const FCBTouch::FTuning Tuning = MakeTuning(Device.DpiScale);
+			const FCBTouch::FSafeArea Safe = MakeSafeArea(Device);
+			const int32 HandCount = 12;
+
+			int32 CardsChecked = 0;
+			for (int32 Page = 0; Page < 8; ++Page)
+			{
+				const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(
+					FVector2D(Device.Width, Device.Height), Safe, MakeState(HandCount, Page), Tuning);
+				if (Page >= Layout.Grid.PageCount)
+				{
+					break;
+				}
+
+				for (int32 Index = 0; Index < Layout.VisibleCards; ++Index)
+				{
+					const int32 HandIndex = Layout.HandIndexOf(Index);
+					for (int32 Cell = 0; Cell < 4; ++Cell)
+					{
+						const EFCBAttribute Attribute = FCBTouch::AttributeFromCellIndex(Cell);
+						const FCBTouch::FRect Stat = Layout.StatRect(Index, Attribute);
+						const FCBTouch::FHitTarget Hit = FCBTouch::HitTest(Layout, Stat.Center());
+						EXPECT(Hit.Target == FCBTouch::ETarget::CardStat);
+						EXPECT_EQ(Hit.HandIndex, HandIndex);
+						EXPECT(Hit.Attribute == Attribute);
+
+						// ... and the tap means "play this card on this attribute", in one gesture.
+						const FCBTouch::FCommand Command =
+							FCBTouch::ResolveTap(Layout, Stat.Center(), MakeState(HandCount, Page), true);
+						EXPECT(Command.Action == FCBTouch::EAction::DeclareAndPlay);
+						EXPECT_EQ(Command.HandIndex, HandIndex);
+						EXPECT(Command.Attribute == Attribute);
+					}
+
+					// The name strip selects without spending a card.
+					const FCBTouch::FCommand Select = FCBTouch::ResolveTap(
+						Layout, Layout.NameRect(Index).Center(), MakeState(HandCount, Page), true);
+					EXPECT(Select.Action == FCBTouch::EAction::SelectCard);
+					EXPECT_EQ(Select.HandIndex, HandIndex);
+					++CardsChecked;
+				}
+
+				// Paging, when it exists, is reachable by a button and by a swipe.
+				if (Layout.Grid.PageCount > 1)
+				{
+					EXPECT(!Layout.PageNextButton.IsEmpty());
+					const FCBTouch::FCommand NextTap = FCBTouch::ResolveTap(
+						Layout, Layout.PageNextButton.Center(), MakeState(HandCount, Page), true);
+					EXPECT(NextTap.Action == FCBTouch::EAction::NextPage);
+					EXPECT_EQ(NextTap.PageIndex, (Page + 1) % Layout.Grid.PageCount);
+
+					const FVector2D From = Layout.HandRegion.Center();
+					const FVector2D To = From - FVector2D(Tuning.MinTarget * 3.f, 0.f);
+					const FCBTouch::FCommand Swiped = FCBTouch::ResolveGesture(Layout, From, 0.f, To, 0.2f,
+						MakeState(HandCount, Page), FCBTouch::FGestureConfig(), true);
+					EXPECT(Swiped.Action == FCBTouch::EAction::NextPage);
+				}
+			}
+			EXPECT_EQ(CardsChecked, HandCount);
+		}
+	}
+
+	FCB_TEST(TestTouchLayoutSizesAcrossViewports)
+	{
+		// The desktop keeps its single column: a 1080p window fits 12 rows at the mouse-sized target, and the
+		// mobile grid must not regress that into two columns.
+		const FCBTouch::FTuning Desktop = MakeTuning(1.f);
+		const FCBTouch::FTableLayout DesktopLayout = FCBTouch::BuildLayout(
+			FVector2D(1920.f, 1080.f), MakeSafeArea(GDevices[5]), MakeState(12), Desktop);
+		EXPECT_EQ(DesktopLayout.Grid.Columns, 1);
+		EXPECT_EQ(DesktopLayout.Grid.PageCount, 1);
+		EXPECT(DesktopLayout.Grid.CardHeight >= Desktop.MinTarget);
+		EXPECT(DesktopLayout.DetailPanel.Width() >= 1920.f * Desktop.MinDetailWidthFraction - 1.f);
+
+		// A phone cannot fit 12 rows of 48 dp, so it goes to two columns *without* paging: all twelve cards stay
+		// on one screen, which is the whole point of the grid.
+		const FCBTouch::FTuning Phone = MakeTuning(3.f);
+		const FCBTouch::FTableLayout PhoneLayout = FCBTouch::BuildLayout(
+			FVector2D(2400.f, 1080.f), MakeSafeArea(GDevices[0]), MakeState(12), Phone);
+		EXPECT_EQ(PhoneLayout.Grid.Columns, 2);
+		EXPECT_EQ(PhoneLayout.Grid.PageCount, 1);
+		EXPECT_EQ(PhoneLayout.VisibleCards, 12);
+		EXPECT(PhoneLayout.Grid.CardHeight >= Phone.MinTarget * Phone.CompactTolerance - 0.5f);
+		// 44 dp of row height, and the value cells stay wide enough to hit.
+		EXPECT(PhoneLayout.StatCellWidth >= Phone.MinTarget * Phone.MinStatCellWidthFraction - 1.f);
+		EXPECT(PhoneLayout.Grid.RowsPerPage >= 6);
+
+		// Paging is the last resort, and it only happens where a page genuinely cannot hold the hand.
+		const FCBTouch::FTuning Tiny = MakeTuning(1.5f);
+		const FCBTouch::FTableLayout TinyLayout = FCBTouch::BuildLayout(
+			FVector2D(854.f, 480.f), MakeSafeArea(GDevices[4]), MakeState(12), Tiny);
+		EXPECT(TinyLayout.Grid.PageCount > 1);
+		EXPECT(TinyLayout.Grid.bPaged);
+		EXPECT(TinyLayout.VisibleCards > 0);
+		EXPECT(TinyLayout.VisibleCards < 12);
+		// A paged grid may leave a partial last page, and it must still be reachable and drawable.
+		const FCBTouch::FTableLayout LastPage = FCBTouch::BuildLayout(
+			FVector2D(854.f, 480.f), MakeSafeArea(GDevices[4]), MakeState(12, 99), Tiny);
+		EXPECT_EQ(LastPage.PageIndex, LastPage.Grid.PageCount - 1);
+		EXPECT(LastPage.VisibleCards >= 1);
+		EXPECT(!LastPage.CardRect(0).IsEmpty());
+
+		// Documents the shipped numbers: with 12 cards and the default tuning, nothing pages.
+		std::printf("  columns by viewport:");
+		for (const FTestDevice& Device : GDevices)
+		{
+			const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(FVector2D(Device.Width, Device.Height),
+				MakeSafeArea(Device), MakeState(12), MakeTuning(Device.DpiScale));
+			std::printf(" %dx%d", Layout.Grid.Columns, Layout.Grid.RowsPerPage);
+		}
+		std::printf("\n");
+	}
+
+	FCB_TEST(TestTouchGestureClassification)
+	{
+		const FVector2D Viewport(2400.f, 1080.f);
+		const FCBTouch::FGestureConfig Config;
+		const FVector2D Start(1200.f, 900.f);
+
+		const float SwipeDistance = FCBTouch::FGestureConfig::ResolveSwipeDistance(Config, Viewport);
+		EXPECT(SwipeDistance >= 72.f);
+
+		// A quick, still press is a tap; a slow one still is too (no dead band, see FCBTouch.cpp).
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start, 0.05f, Config, Viewport) == FCBTouch::EGesture::Tap);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + FVector2D(10.f, 8.f), 0.30f, Config, Viewport) == FCBTouch::EGesture::Tap);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start, 0.60f, Config, Viewport) == FCBTouch::EGesture::LongPress);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + FVector2D(3.f, 3.f), 0.80f, Config, Viewport) == FCBTouch::EGesture::LongPress);
+
+		// Four swipe directions, as long as they beat the axis bias and are quick enough.
+		const FVector2D Far = FVector2D(SwipeDistance * 2.f, 0.f);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + Far, 0.20f, Config, Viewport) == FCBTouch::EGesture::SwipeRight);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start - Far, 0.20f, Config, Viewport) == FCBTouch::EGesture::SwipeLeft);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + FVector2D(0.f, SwipeDistance * 2.f), 0.20f, Config, Viewport) == FCBTouch::EGesture::SwipeDown);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start - FVector2D(0.f, SwipeDistance * 2.f), 0.20f, Config, Viewport) == FCBTouch::EGesture::SwipeUp);
+
+		// A slow drag and a diagonal are not commands: better to ignore than to guess.
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start - Far, 2.5f, Config, Viewport) == FCBTouch::EGesture::None);
+		const FVector2D Diagonal(SwipeDistance * 2.f, SwipeDistance * 2.f);
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + Diagonal, 0.2f, Config, Viewport) == FCBTouch::EGesture::None);
+		// A drift that is too big for a tap and too small for a swipe is nothing at all.
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + FVector2D(40.f, 0.f), 0.1f, Config, Viewport) == FCBTouch::EGesture::None);
+		// Just past the slop on a long press is still an inspect, but a long hold that travelled is not.
+		EXPECT(FCBTouch::ClassifyGesture(Start, 0.f, Start + FVector2D(SwipeDistance * 3.f, 0.f), 0.9f, Config, Viewport) == FCBTouch::EGesture::None);
+
+		// The threshold is device-relative but floored: 5% of the short side, never under 72 px, so a swipe on a
+		// small screen is not required to travel as far as one on a tablet.
+		const float SmallSwipe = FCBTouch::FGestureConfig::ResolveSwipeDistance(Config, FVector2D(854.f, 480.f));
+		const float TabletSwipe = FCBTouch::FGestureConfig::ResolveSwipeDistance(Config, FVector2D(2560.f, 1600.f));
+		EXPECT_EQ(static_cast<int32>(SmallSwipe), 72);
+		EXPECT(TabletSwipe > SmallSwipe);
+	}
+
+	FCB_TEST(TestTouchNeverPlaysUnasked)
+	{
+		const FCBTouch::FTuning Tuning = MakeTuning(3.f);
+		const FVector2D Viewport(2400.f, 1080.f);
+		const FCBTouch::FSafeArea Safe = MakeSafeArea(GDevices[0]);
+
+		const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(Viewport, Safe, MakeState(12), Tuning);
+		const FVector2D ActionCell = Layout.StatRect(0, EFCBAttribute::Age).Center();
+
+		// While the opponent is deciding, a tap on a value cell does nothing - a double tap must not queue a move.
+		const FCBTouch::FCommand Waiting = FCBTouch::ResolveTap(Layout, ActionCell, MakeState(12, 0, 0, false, false), true);
+		EXPECT(!Waiting.IsValid());
+		EXPECT(!Waiting.Note.IsEmpty()); // and it says why in the log
+
+		// A stray tap in the middle of the table is a no-op: it must not spend the selected card. (The whole
+		// hand band is covered by cards, so the "empty table" is the detail column above the chips.)
+		const FVector2D TableMiddle(Layout.DetailPanel.Center().X, Layout.DetailPanel.Top + 12.f);
+		const FCBTouch::FCommand Stray = FCBTouch::ResolveTap(Layout, TableMiddle, MakeState(12), true);
+		EXPECT(!Stray.IsValid());
+		EXPECT(!Stray.Note.IsEmpty());
+
+		// The match-level buttons work regardless of whose turn it is.
+		const FCBTouch::FCommand NewMatch = FCBTouch::ResolveTap(Layout, Layout.NewMatchButton.Center(), MakeState(12, 0, 0, false, false), true);
+		EXPECT(NewMatch.Action == FCBTouch::EAction::NewMatch);
+		const FCBTouch::FCommand RollSeed = FCBTouch::ResolveTap(Layout, Layout.RollSeedButton.Center(), MakeState(12, 0, 0, false, false), true);
+		EXPECT(RollSeed.Action == FCBTouch::EAction::RollSeed);
+		const FCBTouch::FCommand Log = FCBTouch::ResolveTap(Layout, Layout.LogButton.Center(), MakeState(12, 0, 0, false, false), true);
+		EXPECT(Log.Action == FCBTouch::EAction::ToggleLog);
+
+		// The end screen is a single play-again target: no card can be played after the result.
+		const FCBTouch::FCommand Over = FCBTouch::ResolveTap(Layout, ActionCell, MakeState(12, 0, 0, true, false), true);
+		EXPECT(Over.Action == FCBTouch::EAction::NewMatch);
+
+		// While a card is being inspected the overlay is modal: a tap closes it and plays nothing.
+		const FCBTouch::FCommand Peek = FCBTouch::ResolveTap(Layout, ActionCell, MakeState(12, 0, 0, false, true, true), true);
+		EXPECT(Peek.Action == FCBTouch::EAction::ClosePeek);
+
+		// One-tap play off: a value cell only declares, and PLAY is the confirm.
+		const FCBTouch::FCommand Declare = FCBTouch::ResolveTap(Layout, ActionCell, MakeState(12), false);
+		EXPECT(Declare.Action == FCBTouch::EAction::DeclareAttribute);
+		EXPECT(Declare.Attribute == EFCBAttribute::Age);
+		const FCBTouch::FCommand Play = FCBTouch::ResolveTap(Layout, Layout.PlayButton.Center(), MakeState(12), false);
+		EXPECT(Play.Action == FCBTouch::EAction::Confirm);
+
+		// The detail chips declare without playing; the long press inspects without playing.
+		const FCBTouch::FCommand Chip = FCBTouch::ResolveTap(Layout, Layout.DetailAttrChips[2].Center(), MakeState(12), true);
+		EXPECT(Chip.Action == FCBTouch::EAction::DeclareAttribute);
+		EXPECT(Chip.Attribute == EFCBAttribute::Speed);
+		const FCBTouch::FCommand Hold = FCBTouch::ResolveGesture(Layout, Layout.StatRect(3, EFCBAttribute::Power).Center(), 0.f,
+			Layout.StatRect(3, EFCBAttribute::Power).Center(), 0.7f, MakeState(12), FCBTouch::FGestureConfig(), true);
+		EXPECT(Hold.Action == FCBTouch::EAction::PeekCard);
+		EXPECT_EQ(Hold.HandIndex, 3);
+	}
+
+	FCB_TEST(TestTouchControlsNeverOverlap)
+	{
+		// Two controls in one place is the one bug a hit test cannot survive, and it is invisible in a
+		// screenshot. Every interactive rect is checked against every other, on every device, both mid-match and
+		// on the end screen.
+		for (const FTestDevice& Device : GDevices)
+		{
+			for (int32 MatchOver = 0; MatchOver <= 1; ++MatchOver)
+			{
+				const FCBTouch::FTuning Tuning = MakeTuning(Device.DpiScale);
+				const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(FVector2D(Device.Width, Device.Height),
+					MakeSafeArea(Device), MakeState(12, 0, 0, MatchOver == 1, MatchOver == 0), Tuning);
+
+				struct FNamedRect
+				{
+					const TCHAR* Name;
+					FCBTouch::FRect Rect;
+				};
+				TArray<FNamedRect> Controls;
+				Controls.Add({ TEXT("NewMatch"), Layout.NewMatchButton });
+				Controls.Add({ TEXT("RollSeed"), Layout.RollSeedButton });
+				Controls.Add({ TEXT("Log"), Layout.LogButton });
+				Controls.Add({ TEXT("Play"), Layout.PlayButton });
+				Controls.Add({ TEXT("EndRestart"), Layout.EndRestartButton });
+				if (Layout.Grid.bPaged && Layout.Grid.PageCount > 1)
+				{
+					Controls.Add({ TEXT("PagePrev"), Layout.PagePrevButton });
+					Controls.Add({ TEXT("PageNext"), Layout.PageNextButton });
+				}
+				Controls.Add({ TEXT("OpponentCard"), Layout.OpponentCard });
+				for (int32 Chip = 0; Chip < 4; ++Chip)
+				{
+					Controls.Add({ TEXT("DetailChip0"), Layout.DetailAttrChips[Chip] });
+				}
+				for (int32 Index = 0; Index < Layout.VisibleCards; ++Index)
+				{
+					Controls.Add({ TEXT("CardRow0"), Layout.CardRect(Index) });
+				}
+
+				for (int32 A = 0; A < Controls.Num(); ++A)
+				{
+					if (Controls[A].Rect.IsEmpty())
+					{
+						continue;
+					}
+
+					// Everything interactive is inside the safe area: nothing a player must hit may sit under
+					// the notch or the gesture bar.
+					EXPECT(Controls[A].Rect.Left >= Layout.SafeRect.Left - 0.5f);
+					EXPECT(Controls[A].Rect.Right <= Layout.SafeRect.Right + 0.5f);
+					EXPECT(Controls[A].Rect.Top >= Layout.SafeRect.Top - 0.5f);
+					EXPECT(Controls[A].Rect.Bottom <= Layout.SafeRect.Bottom + 0.5f);
+
+					for (int32 B = A + 1; B < Controls.Num(); ++B)
+					{
+						if (Controls[B].Rect.IsEmpty())
+						{
+							continue;
+						}
+						if (Controls[A].Rect.Intersects(Controls[B].Rect))
+						{
+							++GFailures;
+							std::printf("  FAIL %s: %s overlaps %s on %s\n", __FILE__,
+								Controls[A].Name, Controls[B].Name, Device.Name);
+						}
+						++GChecks;
+					}
+				}
+			}
+		}
+	}
+
+	FCB_TEST(TestTouchTracksSelectionAndHandSize)
+	{
+		const FCBTouch::FTuning Tuning = MakeTuning(3.f);
+		const FVector2D Viewport(2400.f, 1080.f);
+		const FCBTouch::FSafeArea Safe = MakeSafeArea(GDevices[0]);
+
+		// A hand that shrinks under the current page must clamp the page, not index off the end: cards leave
+		// the hand every round, and an ability can return one.
+		const FCBTouch::FTableLayout Small = FCBTouch::BuildLayout(Viewport, Safe, MakeState(2, 5, 1), Tuning);
+		EXPECT_EQ(Small.Grid.PageCount, 1);
+		EXPECT_EQ(Small.PageIndex, 0);
+		EXPECT_EQ(Small.VisibleCards, 2);
+		EXPECT_EQ(Small.SelectedVisibleIndex, 1);
+		EXPECT_EQ(Small.HandIndexOf(Small.SelectedVisibleIndex), 1);
+
+		// An empty hand draws nothing and hits nothing.
+		const FCBTouch::FTableLayout Empty = FCBTouch::BuildLayout(Viewport, Safe, MakeState(0), Tuning);
+		EXPECT_EQ(Empty.VisibleCards, 0);
+		EXPECT_EQ(Empty.SelectedVisibleIndex, INDEX_NONE);
+		EXPECT(Empty.CardRect(0).IsEmpty());
+
+		// The selection follows the card, and a selection on page two is not reported as visible on page one.
+		const FCBTouch::FTuning Tiny = MakeTuning(1.5f);
+		const FCBTouch::FTableLayout TinyMedia = FCBTouch::BuildLayout(
+			FVector2D(854.f, 480.f), MakeSafeArea(GDevices[4]), MakeState(12, 0, 9), Tiny);
+		EXPECT(TinyMedia.Grid.PageCount > 1);
+		EXPECT_EQ(TinyMedia.SelectedVisibleIndex, INDEX_NONE);
+		const FCBTouch::FTableLayout Followed = FCBTouch::BuildLayout(
+			FVector2D(854.f, 480.f), MakeSafeArea(GDevices[4]),
+			MakeState(12, FCBTouch::FHandGrid::PageForCard(TinyMedia.Grid, 9), 9), Tiny);
+		EXPECT_EQ(Followed.SelectedVisibleIndex, 9 - Followed.FirstCard);
+
+		// Device rotation / window resize: the same state must lay out at any aspect without leaving the screen.
+		for (const FTestDevice& Device : GDevices)
+		{
+			const FCBTouch::FTableLayout Layout = FCBTouch::BuildLayout(FVector2D(Device.Width, Device.Height),
+				MakeSafeArea(Device), MakeState(12), MakeTuning(Device.DpiScale));
+			EXPECT(Layout.PlayButton.Right <= Layout.SafeRect.Right + 0.5f);
+			EXPECT(Layout.PlayButton.Left >= Layout.SafeRect.Left - 0.5f);
+			EXPECT(Layout.NewMatchButton.Left >= Layout.SafeRect.Left - 0.5f);
+			EXPECT(Layout.LogButton.Right <= Layout.SafeRect.Right + 0.5f);
+			EXPECT(Layout.DetailAttrChips[0].Left >= Layout.SafeRect.Left - 0.5f);
+			EXPECT(Layout.DetailAttrChips[3].Right <= Layout.SafeRect.Right + 0.5f);
+		}
+	}
+
+	FCB_TEST(TestTouchSafeAreaAndShippedConfig)
+	{
+		// The fallback covers the notches and the gesture bar, and is asymmetric because the two are not the
+		// same size: the bottom bar eats a hand row, the top one does not.
+		const FCBTouch::FSafeArea Touch = FCBTouch::FallbackSafeArea(true);
+		EXPECT(Touch.Bottom > Touch.Top);
+		EXPECT(Touch.Left > 0.f && Touch.Right > 0.f);
+		EXPECT(FCBTouch::FallbackSafeArea(false).IsZero());
+
+		// A reported safe area is honoured, and a nonsense one is clamped instead of inverting the layout.
+		const FCBTouch::FTuning Tuning = MakeTuning(3.f);
+		const FCBTouch::FSafeArea Wide{ 0.09f, 0.05f, 0.09f, 0.12f };
+		const FCBTouch::FTableLayout Inset = FCBTouch::BuildLayout(FVector2D(2400.f, 1080.f), Wide, MakeState(12), Tuning);
+		EXPECT(Inset.SafeRect.Left >= 2400.f * 0.09f - 0.5f);
+		EXPECT(Inset.SafeRect.Bottom <= 1080.f * 0.88f + 0.5f);
+		EXPECT(Inset.CardRect(0).Top >= Inset.SafeRect.Top - 0.5f);
+
+		const FCBTouch::FSafeArea Insane{ 9.f, -3.f, 0.4f, 0.6f };
+		const FCBTouch::FTableLayout Clamped = FCBTouch::BuildLayout(FVector2D(2400.f, 1080.f), Insane, MakeState(12), Tuning);
+		EXPECT(Clamped.SafeRect.Width() > 0.f);
+		EXPECT(Clamped.SafeRect.Height() > 0.f);
+		EXPECT(Clamped.SafeRect.Left > 0.f && Clamped.SafeRect.Right < 2400.f);
+		// Whatever is left of the viewport still lays out: the grid may drop a column, but never to zero.
+		EXPECT(Clamped.Grid.Columns >= 1 && Clamped.Grid.Columns <= Tuning.MaxHandColumns);
+		EXPECT(Clamped.Grid.PageCount >= 1);
+		EXPECT(!Clamped.CardRect(0).IsEmpty());
+
+		// The shipped config is part of the mobile build: the ini files are what the phone actually reads, and
+		// a wrong line there is invisible until a device fails (the same reason the data tables are checked).
+		const FString EngineIni = ReadFileOrEmpty("Config/DefaultEngine.ini");
+		const FString InputIni = ReadFileOrEmpty("Config/DefaultInput.ini");
+		EXPECT(EngineIni.Len() > 0);
+		EXPECT(InputIni.Len() > 0);
+		if (EngineIni.Len() == 0 || InputIni.Len() == 0)
+		{
+			return;
+		}
+
+		const auto ExpectContains = [](const FString& Haystack, const TCHAR* Needle)
+		{
+			EXPECT(Haystack.Contains(Needle));
+		};
+		ExpectContains(InputIni, TEXT("bEnableTouchEmulation=False"));
+		ExpectContains(InputIni, TEXT("DefaultTouchInterface=None"));
+		ExpectContains(InputIni, TEXT("ActionName=\"FCB_Page_Next\""));
+		ExpectContains(EngineIni, TEXT("Orientation=Landscape"));
+		ExpectContains(EngineIni, TEXT("PackageName=com.fantasy.cardbattle"));
+		ExpectContains(EngineIni, TEXT("MinSdkVersion=26"));
+		ExpectContains(EngineIni, TEXT("bBuildForArm64=True"));
+
+		// The touch tuning has to be in the ini as well as in the class defaults: the CDO is what the game
+		// reads, the ini is what a review sees, and FantasyCardBattle.Mobile.SettingsAreAbsorbed (in-engine)
+		// pins the two together. This half is checkable without an engine, so it is checked here.
+		const FString GameIni = ReadFileOrEmpty("Config/DefaultGame.ini");
+		EXPECT(GameIni.Len() > 0);
+		ExpectContains(GameIni, TEXT("TouchTargetDp=48.0"));
+		ExpectContains(GameIni, TEXT("bTouchOneTapPlay=True"));
+		ExpectContains(GameIni, TEXT("TouchLongPressSeconds=0.45"));
+		ExpectContains(GameIni, TEXT("TouchSafeAreaBottomPercent=-1.0"));
+	}
 
 	FCB_TEST(TestSyntheticLoadAndDoctrine)
 	{
@@ -926,6 +1426,14 @@ namespace
 		RUN_TEST(TestLeadConditionalAbility);
 		RUN_TEST(TestGeneratedDataQuality);
 		RUN_TEST(TestSeatBalancingAndFilters);
+		RUN_TEST(TestTouchLayoutFitsEveryTarget);
+		RUN_TEST(TestTouchEveryCardAndAttributeIsReachable);
+		RUN_TEST(TestTouchLayoutSizesAcrossViewports);
+		RUN_TEST(TestTouchGestureClassification);
+		RUN_TEST(TestTouchNeverPlaysUnasked);
+		RUN_TEST(TestTouchControlsNeverOverlap);
+		RUN_TEST(TestTouchTracksSelectionAndHandSize);
+		RUN_TEST(TestTouchSafeAreaAndShippedConfig);
 
 		std::printf("\n%d checks, %d failures\n", GChecks, GFailures);
 		return GFailures == 0 ? 0 : 1;

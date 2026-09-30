@@ -89,20 +89,23 @@ Source/FantasyCardBattle/Public/FCBAiAgent.h       four difficulty tiers, EV mod
 Source/FantasyCardBattle/Public/FCBDataAssets.h    DataTable row structs, rules asset, settings, AI asset
 Source/FantasyCardBattle/Public/FCBGameInstance.h  owns database + match + AI; the view API for widgets
 Source/FantasyCardBattle/Public/FCBGameMode.h      GameMode, PlayerController, code-only debug HUD
-Source/FantasyCardBattle/Private/Tests/            in-engine automation tests (Session Frontend)
+Source/FantasyCardBattle/Public/FCBTouch.h         mobile layout, hit testing, gestures (engine-free, tested)
+Source/FantasyCardBattle/Private/Tests/            in-engine automation tests (Session Frontend), incl. FCBTouchTests
 Content/Python/import_content.py                   CSV -> DataTable / data asset / level
 Tools/MockUE/SelfTest.cpp                          the headless test harness
 ```
 
-The split that matters: `FCBTypes.h`, `FCBCardDatabase.*`, `FCBMatchRules.*`, `FCBAiAgent.*` never include a
-header that the mock shim cannot provide. `FCBDataAssets.*` and up are Unreal-only. If you need a rule
-visible in both, it belongs in the resolver, not in the widget layer.
+The split that matters: `FCBTypes.h`, `FCBCardDatabase.*`, `FCBMatchRules.*`, `FCBAiAgent.*` and `FCBTouch.*`
+never include a header that the mock shim cannot provide. `FCBDataAssets.*` and up are Unreal-only. If you need
+a rule visible in both, it belongs in the resolver, not in the widget layer.
 
 ## Tests
 
-**Headless, no engine** - `Tools/mock_build.sh run`: 177 checks over the shipped CSVs (loader, validator,
-coverage floors, rarity ladder, tie rules, every ability effect, the AI tiers, determinism). This is what
-`Docs/Balance.md` numbers come from.
+**Headless, no engine** - `Tools/mock_build.sh run`: 8123 checks. Most of them are the card data and the rules
+engine over the shipped CSVs (loader, validator, coverage floors, rarity ladder, tie rules, every ability
+effect, the AI tiers, determinism - the numbers in `Docs/Balance.md` come from here). 7946 of them are the
+mobile layer: seven `TestTouch*` tests that press every value cell of a 12-card hand on seven simulated
+viewports and assert the invariants in `Docs/Mobile.md`.
 
 **In-engine** - Session Frontend > Automation Control, or from CI:
 
@@ -118,6 +121,8 @@ UnrealEditor-Cmd FantasyCardBattle.uproject -ExecCmds="Automation RunTests Fanta
 | `FantasyCardBattle.Match.SameSeedPlaysTheSameMatch` | seed + config replays a match byte for byte |
 | `FantasyCardBattle.Match.CardsAreAlwaysAccountedFor` | deck + pot + burned + both hands + both piles equals the pool size after *every* round of four full matches |
 | `FantasyCardBattle.Ui.NumberAndColourFormatting` | the number and `#RRGGBB` helpers the HUD and widgets share |
+| `FantasyCardBattle.Mobile.SettingsAreAbsorbed` | the touch targets and safe-area settings in `Config/DefaultGame.ini` reach `UFCBSettings` - the seam the headless harness cannot see, because it has no config system |
+| `FantasyCardBattle.Mobile.LayoutIsPlayable` | the shipped settings produce a 12-card grid with hittable value cells on a real phone, tablet and desktop viewport |
 
 ## First build on a fresh machine
 
@@ -133,13 +138,32 @@ UnrealEditor-Cmd FantasyCardBattle.uproject -ExecCmds="Automation RunTests Fanta
 5. Press Play. You should see the table drawn by `AFCBDebugHud`, your 12 cards, and `data: Content/Data/Generated:
    110 cards` on the F1 overlay. If it says `DEBUG POOL`, the CSV folder was not found (step 2, or the
    `CardDataDirectory` setting).
-6. Run `FantasyCardBattle` in the Session Frontend. Six tests, all green.
+6. Run `FantasyCardBattle` in the Session Frontend. Eight tests, all green.
 7. Only if you want editor assets: `python3 Content/Python/import_content.py` from inside the editor
    (Content Browser > Content/Python > right-click > Run Script). Restart the editor afterwards so the new
    `/Game/Data/DT_*` assets are picked up by the rules asset.
 8. Package for Windows when the above is green. Remember `Content/Data/Generated` in
    *Project Settings > Packaging > Additional Non-Asset Directories to Copy* if you are shipping the CSV path
    rather than cooked DataTables.
+
+## Controls
+
+Keyboard and mouse (bound in `Config/DefaultInput.ini`, no Input Action assets):
+
+| Key | Action |
+|-----|--------|
+| `1`-`0`, `Q`, `W` | select that hand slot |
+| `←` / `→` | previous / next card |
+| `A` `P` `S` `H` | declare Age / Power / Speed / Height |
+| `Enter` / `Space` / left click | confirm (a click on a card selects and plays it) |
+| `PageUp` / `PageDown` | hand page, when the window is small enough that the hand is paged |
+| `N` / `R` | new match / same match with a fresh deal |
+| `L` / `F1` | toggle the log / the debug overlay |
+| `Esc` | clear the selection |
+
+Touch (Android): tap a value cell to play that card, tap a card name to select it, hold a card to read it,
+swipe the hand to page or walk the selection. Every control is at least 48 dp with safe-area insets honoured -
+[Docs/Mobile.md](Mobile.md) is the full map, the measured layout per device and the accessibility notes.
 
 ## Console commands and debugging
 

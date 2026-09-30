@@ -22,6 +22,7 @@ SOURCES=(
 	"$ROOT/Source/FantasyCardBattle/Private/FCBCardDatabase.cpp"
 	"$ROOT/Source/FantasyCardBattle/Private/FCBMatchRules.cpp"
 	"$ROOT/Source/FantasyCardBattle/Private/FCBAiAgent.cpp"
+	"$ROOT/Source/FantasyCardBattle/Private/FCBTouch.cpp"
 	"$ROOT/Tools/MockUE/SelfTest.cpp"
 )
 

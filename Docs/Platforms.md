@@ -11,9 +11,9 @@ about the parts that are not shared.
   achievements, cloud saves, lobbies or matchmaking, so the shipped build does not link Steam at all.
   Enabling it is a plugin flag plus an `OnlineSubsystem` config section - no game-code change is needed,
   because nothing in `Source/FantasyCardBattle` includes an online header.
-* Window: the game needs roughly 1100x700 to show 12 hand rows plus the detail column. Below that the debug HUD
-  drops hand rows (`FCBHud::ComputeLayout` clamps `VisibleCards`) rather than overlapping text; the UMG pass
-  replaces that with real scaling.
+* Window: roughly 1100x700 shows 12 hand rows plus the detail column. A smaller window does not drop rows any
+  more - the hand grid grows a second column and keeps all twelve cards on screen (`FCBTouch::ComputeHandGrid`,
+  [Docs/Mobile.md](Mobile.md)). The desktop keeps its single column at any size where 12 rows fit.
 * Packaging: `Build > Package Project > Windows`. The game reads `Content/Data/Generated/*.csv` at runtime, so
   those files must be staged when you are *not* using DataTable assets: add them to
   `Project Packaging > Additional Non-Asset Directories to Copy`. When `import_content.py` has been run, the

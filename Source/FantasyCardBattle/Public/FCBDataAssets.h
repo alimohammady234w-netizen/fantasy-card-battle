@@ -245,6 +245,52 @@ public:
 	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Data")
 	FString CardDataDirectory = TEXT("Content/Data/Generated");
 
+	//~ ---------------------------------------------------------------- mobile / touch
+	// The layout maths that consumes these lives in FCBTouch (engine-free, harness tested) and the numbers
+	// they produce for real viewports are in Docs/Mobile.md.
+
+	/** Smallest tappable square in device-independent pixels. 48 dp is the Material target. */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "24", ClampMax = "96"))
+	float TouchTargetDp = 48.f;
+
+	/** Debug override for the computed target, in viewport pixels. 0 = derive it from the viewport. */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "0", ClampMax = "400"))
+	float TouchTargetOverridePx = 0.f;
+
+	/**
+	 * Safe-area insets as a percentage of the viewport, per edge. Negative means "derive it": the fallback is
+	 * 3/2/3/5 percent, which is what a phone with a notch and a gesture bar needs (see FCBTouch::FallbackSafeArea).
+	 * These are the numbers the layout reserves, so a negative value here and a positive one on device give the
+	 * same result on a device that reports nothing.
+	 */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "-1", ClampMax = "20"))
+	float TouchSafeAreaLeftPercent = -1.f;
+
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "-1", ClampMax = "20"))
+	float TouchSafeAreaTopPercent = -1.f;
+
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "-1", ClampMax = "20"))
+	float TouchSafeAreaRightPercent = -1.f;
+
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "-1", ClampMax = "20"))
+	float TouchSafeAreaBottomPercent = -1.f;
+
+	/**
+	 * One tap on a value cell declares the attribute and plays the card. Off makes the cell declare only and
+	 * leaves PLAY as the single confirm, which is the keyboard flow and the safer setting for a player with
+	 * shaky hands.
+	 */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile")
+	bool bTouchOneTapPlay = true;
+
+	/** How long a finger must rest on a card before it opens the full card face instead of playing it. */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "0.2", ClampMax = "2.0"))
+	float TouchLongPressSeconds = 0.45f;
+
+	/** Movement allowed inside a tap, in viewport pixels. Past it a touch is a drag or a swipe. */
+	UPROPERTY(config, EditAnywhere, BlueprintReadOnly, Category = "Mobile", meta = (ClampMin = "4", ClampMax = "200"))
+	float TouchTapSlopPx = 24.f;
+
 	/**
 	 * The class default object, which is what Config/DefaultGame.ini configures.
 	 *

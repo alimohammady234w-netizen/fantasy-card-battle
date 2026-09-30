@@ -5,6 +5,10 @@ players, an AI opponent with four difficulty tiers, 110 data-driven cards with A
 attributes, ten factions with always-on doctrine modifiers, and 24 abilities resolved by a single shared rules
 engine.
 
+Touch is a first-class input, not a shim: tap a card's value cell to play it in one gesture, hold to read it,
+swipe to page; the hand grid is chosen from the space a phone actually has, and safe-area insets keep the last
+row clear of the Android gesture bar. [Docs/Mobile.md](Docs/Mobile.md).
+
 The interesting part is not the theme: it is that **the card data, the rules and the balance are all testable
 without the engine.** The same `FCBMatchRules.cpp` that the game runs is compiled by a shell script with `g++`
 and checked against the shipped CSVs, so "this card is broken" and "this faction is over-tuned" are questions
@@ -13,10 +17,14 @@ a 20-second command answers.
 ## Try it in one command
 
 ```sh
-Tools/mock_build.sh run                     # 177 checks against Content/Data/Generated, no engine needed
+Tools/mock_build.sh run                     # 8123 checks against Content/Data/Generated, no engine needed
 Tools/mock_build.sh run --sim 200 --report  # + AI-vs-AI ladder and the duel-matrix balance report
 python3 Tools/generate_cards.py --check     # validate the authored catalog without writing files
 ```
+
+7946 of those checks are the mobile layer: every value cell of a 12-card hand pressed on seven simulated
+viewports (two phones, a small phone, a tablet, a 480p device, a desktop and a small window), because "is every
+control reachable with a thumb" is a geometry question a 20-second command can answer too.
 
 ## Play it
 
@@ -30,8 +38,10 @@ C++, the HUD draws the whole table with canvas text, and the bindings come from 
 and the game is playable if it is never run.
 
 Keys: `1`–`0`/`Q`/`W` pick a card, `←`/`→` cycle, `A` `P` `S` `H` declare Age/Power/Speed/Height (and play),
-`Enter`/click confirms, `N` rematch the same deal, `R` new deal, `L` log, `F1` debug overlay.
-[Docs/Setup.md](Docs/Setup.md) has the full list plus the Android and Steam notes.
+`Enter`/click confirms, `PageUp`/`PageDown` page the hand, `N` rematch the same deal, `R` new deal, `L` log,
+`F1` debug overlay. On a phone: tap a value cell to play that card, tap a name to select it, hold a card to
+read it, swipe the hand to page. [Docs/Setup.md](Docs/Setup.md) has the full list plus the Android and Steam
+notes.
 
 ## The rules, in four lines
 
@@ -51,6 +61,7 @@ Source/FantasyCardBattle/Public|Private/
   FCBAiAgent.*          Novice/Adept/Expert/Legendary: scored EV plus rollout re-ranking
   FCBDataAssets.*       DataTable row structs, rules asset, project settings, AI profile asset
   FCBGameInstance.*     owns database + match + AI; the only API widgets and the HUD talk to
+  FCBTouch.*            mobile layout, hit testing, gestures - engine-free, so the phone build is testable
   FCBGameMode.*         GameMode, PlayerController, code-only debug HUD
   Private/Tests/        six in-engine automation tests (list in Docs/Setup.md)
 Content/Data/Generated/ the shipped data: DT_Cards.csv, DT_Factions.csv, DT_Abilities.csv, cards.json
@@ -59,18 +70,22 @@ Tools/card_catalog.py   authored data: factions, bands, archetypes, abilities, t
 Tools/generate_cards.py generator + validator (deterministic, --check for CI)
 Tools/MockUE/           the shim and the headless harness that make all of this testable
 Tools/mock_build.sh     build and run the harness
-Docs/                   GameDesign.md, Balance.md, Cards.md, Setup.md, Platforms.md, Telemetry.md
+Docs/                   GameDesign.md, Balance.md, Cards.md, Setup.md, Platforms.md, Mobile.md, Telemetry.md
 Art/Briefs/             per-faction art briefs, generated from the same rows the game loads
 ```
 
 Two boundaries are load-bearing:
 
-* **`FCBTypes.h` / `FCBCardDatabase` / `FCBMatchRules` / `FCBAiAgent` include nothing the mock shim cannot
-  provide.** That is what makes the headless harness possible, and it is why the rules engine has no UMG or
-  Engine includes in it.
+* **`FCBTypes.h` / `FCBCardDatabase` / `FCBMatchRules` / `FCBAiAgent` / `FCBTouch` include nothing the mock
+  shim cannot provide.** That is what makes the headless harness possible, and it is why the rules engine has
+  no UMG or Engine includes in it.
 * **There is exactly one place that resolves a round.** `FFCBMatch::ResolveRoundModifiers` +
   `FinalizeOutcome` are used by `PlayMove`, by the AI's 48-move scan, by the HUD's preview line and by the
   harness tests. A rule that only exists in the UI is a rule that will be wrong.
+* **There is exactly one place that decides where a control is.** `FCBTouch::BuildLayout` is drawn by the HUD
+  and hit tested by the controller, so a keypress, a click and a tap all produce the same `FFCBCommand`. A
+  control the hit test does not know about is the "I tapped it and nothing happened" bug, and it cannot happen
+  here.
 
 ## Balance, in one table
 
@@ -95,3 +110,9 @@ Hot-seat only (no simultaneous defender choice, no netplay), no constructed deck
 Steam achievements, English-only text, and a code-only HUD in place of the UMG card widgets. Each of those has
 a hook already: `bDefenderPlaysTopCard`, `FFCBDeckFilter`, the disabled `OnlineSubsystemSteam` plugin, `FText`
 on everything user-visible, and the view API on `UFCBGameInstance` that the widgets will consume.
+
+On mobile specifically: landscape only (portrait lays out, but the hand-versus-detail split assumes a wide
+screen), no haptics, no controller support, and the device's own safe-area cutout is read from the settings
+rather than from the platform - the one-line hook for that is marked in `FCBGameMode.cpp`, and the geometry it
+feeds is already data. When the UMG widgets land they consume the same `FCBTouch::FTableLayout`, so the tested
+geometry does not get a second, untested twin.
