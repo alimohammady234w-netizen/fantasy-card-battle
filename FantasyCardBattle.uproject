@@ -1,0 +1,19 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.8",
+	"Category": "Card Game",
+	"Description": "Fantasy card battle game (Top Trumps style) - single player, offline, Android.",
+	"Modules": [
+		{
+			"Name": "CardGame",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	],
+	"TargetPlatforms": [
+		"Android"
+	]
+}

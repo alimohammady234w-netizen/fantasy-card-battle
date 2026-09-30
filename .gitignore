@@ -1,0 +1,32 @@
+# ==========================================================================
+# Fantasy Card Battle - Unreal Engine 5.8 gitignore
+# ==========================================================================
+
+# UE generated / machine-local folders
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+
+# Visual Studio / MSBuild
+.vs/
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.opendb
+*.opendb
+
+# JetBrains Rider
+.idea/
+*.iml
+
+# Xcode
+*.xcodeproj
+*.xcworkspace
+
+# OS junk
+.DS_Store
+Thumbs.db
