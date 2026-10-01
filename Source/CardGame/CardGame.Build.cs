@@ -9,14 +9,17 @@ public class CardGame : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
 		// Core gameplay dependencies.
-		// UI (UMG/Slate), DataAsset and additional systems will be added
-		// as private dependencies in later phases.
+		// - GameplayTags: card tag system (Stage 2), used by public headers
+		//   (CardTypes.h / CardDataAsset.h) so it must be a PUBLIC dependency.
+		// - UI (UMG/Slate) and additional systems will be added
+		//   as private dependencies in later phases.
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"InputCore"
+			"InputCore",
+			"GameplayTags"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]

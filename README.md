@@ -47,6 +47,18 @@ docs/
 
 Phase 1 builds **infrastructure only** — no card, battle, AI, deck, ability or shop systems.
 
+## Card Database (Phase 2)
+
+Data-driven card definitions (no battle/deck/UI yet):
+
+- **`Source/CardGame/Cards/`** — `CardTypes.h/.cpp` (enums + native `Card.*` gameplay tags),
+  `CardStats.h` (`FCardStats`), `CardDataAsset.h/.cpp` (`UCardDataAsset : UPrimaryDataAsset`)
+- **Primary Asset Id:** `Card:<CardID>` (e.g. `Card:CARD_ANIMAL_LION_001`) — ready for a
+  future `UAssetManager` card database
+- **Sample cards:** run `Tools/Python/create_sample_cards.py` in the editor
+  (`Tools → Execute Python Script…`) to generate 10 sample assets in `/Game/Data/Cards`
+- **Docs:** `docs/phase-02-card-database.md`
+
 ## Quick Start
 
 1. Install Unreal Engine 5.8 (Epic Games Launcher) with **Android** support.
