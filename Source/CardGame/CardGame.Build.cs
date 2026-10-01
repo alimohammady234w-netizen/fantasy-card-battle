@@ -24,6 +24,9 @@ public class CardGame : ModuleRules
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
+			// Stage 3: CardID -> UCardDataAsset fallback lookup when cards are
+			// organized in subfolders (runtime asset registry scan of /Game/Data).
+			"AssetRegistry"
 		});
 	}
 }

@@ -36,6 +36,8 @@ Content/
   Icons/  Sounds/  Music/  VFX/  Data/  Maps/  (MainMenu, Battle created in editor)
 docs/
   phase-01-setup.md       # Phase 1 setup, compile & test guide (Persian)
+  phase-02-card-database.md
+  phase-03-player-collection.md
 ```
 
 ## Default Classes (Phase 1)
@@ -58,6 +60,19 @@ Data-driven card definitions (no battle/deck/UI yet):
 - **Sample cards:** run `Tools/Python/create_sample_cards.py` in the editor
   (`Tools → Execute Python Script…`) to generate 10 sample assets in `/Game/Data/Cards`
 - **Docs:** `docs/phase-02-card-database.md`
+
+## Player Collection (Phase 3)
+
+Player-owned card state on top of the card database (no deck/UI/battle yet):
+
+- **`Source/CardGame/Collection/`** — `PlayerCardInstance.h/.cpp` (`FPlayerCardInstance`
+  with unique Guid per copy + `FPlayerCardCollection` container), `CardCollectionSubsystem.h/.cpp`
+  (`UCardCollectionSubsystem : UGameInstanceSubsystem` — Add/Remove/Has/Quantity/Level/XP/Save API),
+  `CardCollectionTests.cpp` (automation tests `CardGame.Collection.*`)
+- **`Source/CardGame/Save/`** — `CardGameSaveGame.h/.cpp` (`UCardGameSaveGame`, slot `CardGameSave`, `SaveVersion`)
+- **Duplicates = Option A:** every copy is its own instance (Lion×3 → 3 Guids), `GetCardQuantity` sums them
+- **Dev/test data:** console `CardGame.Collection.GrantDevTestCards` / `Save` / `Load` / `Dump`
+- **Docs:** `docs/phase-03-player-collection.md`
 
 ## Quick Start
 
