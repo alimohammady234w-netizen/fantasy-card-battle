@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.log
+saves/*.json
+saves/*.corrupt*
+.pytest_cache/

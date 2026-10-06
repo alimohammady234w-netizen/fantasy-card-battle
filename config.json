@@ -1,0 +1,42 @@
+{
+  "title": "ARCANA \u2022 Realms in Conflict",
+  "deck_size": 30,
+  "tie_rule": "carry",
+  "upgrade_cost": 100,
+  "card_xp_thresholds": [
+    100,
+    250,
+    500
+  ],
+  "level_stat_bonus": 1,
+  "round_xp": 20,
+  "win_xp": 50,
+  "win_coins": 25,
+  "combo_xp_every": 3,
+  "combo_coins_every": 5,
+  "player_level_xp": 250,
+  "level_reward_coins": 500,
+  "modes": {
+    "Quick Match": {
+      "rounds": 10,
+      "ai_turns": false,
+      "rewards": true
+    },
+    "Classic Match": {
+      "rounds": 30,
+      "ai_turns": true,
+      "rewards": true
+    },
+    "Practice": {
+      "rounds": 10,
+      "ai_turns": false,
+      "rewards": false
+    }
+  },
+  "combo_bonus_xp": 50,
+  "combo_bonus_coins": 100,
+  "level_reward_gems": 20,
+  "match_win_gems": 15,
+  "match_other_gems": 5,
+  "duplicate_coins": 50
+}

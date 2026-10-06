@@ -1,0 +1,167 @@
+{
+  "first_steps": {
+    "title": "First Steps",
+    "description": "Finish your first rewarded match.",
+    "group": "Arena",
+    "metric": "matches_played",
+    "target": 1,
+    "rewards": {
+      "coins": 150,
+      "gems": 10
+    }
+  },
+  "first_victory": {
+    "title": "First Victory",
+    "description": "Win a Quick or Classic Match.",
+    "group": "Arena",
+    "metric": "matches_won",
+    "target": 1,
+    "rewards": {
+      "coins": 200,
+      "gems": 20
+    }
+  },
+  "arena_regular": {
+    "title": "Arena Regular",
+    "description": "Finish ten rewarded matches.",
+    "group": "Arena",
+    "metric": "matches_played",
+    "target": 10,
+    "rewards": {
+      "coins": 400,
+      "gems": 40
+    }
+  },
+  "winning_path": {
+    "title": "Winning Path",
+    "description": "Win ten rewarded matches.",
+    "group": "Arena",
+    "metric": "matches_won",
+    "target": 10,
+    "rewards": {
+      "coins": 600,
+      "gems": 60
+    }
+  },
+  "threefold": {
+    "title": "Threefold",
+    "description": "Reach a three-round winning streak.",
+    "group": "Arena",
+    "metric": "best_combo",
+    "target": 3,
+    "rewards": {
+      "coins": 150,
+      "gems": 10
+    }
+  },
+  "unstoppable": {
+    "title": "Unstoppable",
+    "description": "Reach a five-round winning streak.",
+    "group": "Arena",
+    "metric": "best_combo",
+    "target": 5,
+    "rewards": {
+      "coins": 350,
+      "gems": 30
+    }
+  },
+  "card_captor": {
+    "title": "Card Captor",
+    "description": "Capture fifty cards across rewarded matches.",
+    "group": "Arena",
+    "metric": "cards_won",
+    "target": 50,
+    "rewards": {
+      "coins": 300,
+      "gems": 25
+    }
+  },
+  "growing_power": {
+    "title": "Growing Power",
+    "description": "Reach player level three.",
+    "group": "Mastery",
+    "metric": "player_level",
+    "target": 3,
+    "rewards": {
+      "coins": 250,
+      "gems": 20
+    }
+  },
+  "veteran": {
+    "title": "Veteran",
+    "description": "Reach player level five.",
+    "group": "Mastery",
+    "metric": "player_level",
+    "target": 5,
+    "rewards": {
+      "coins": 500,
+      "gems": 35
+    }
+  },
+  "curator": {
+    "title": "Curator",
+    "description": "Own thirty-five different champions.",
+    "group": "Collection",
+    "metric": "unlocked_cards",
+    "target": 35,
+    "rewards": {
+      "coins": 200,
+      "gems": 20
+    }
+  },
+  "vault_explorer": {
+    "title": "Vault Explorer",
+    "description": "Open three packs.",
+    "group": "Collection",
+    "metric": "total_packs_opened",
+    "target": 3,
+    "rewards": {
+      "coins": 250,
+      "gems": 25
+    }
+  },
+  "masterwork": {
+    "title": "Masterwork",
+    "description": "Raise any owned card to level three.",
+    "group": "Mastery",
+    "metric": "highest_card_level",
+    "target": 3,
+    "rewards": {
+      "coins": 350,
+      "gems": 30
+    }
+  },
+  "forge_starter": {
+    "title": "Forge Starter",
+    "description": "Purchase your first attribute upgrade.",
+    "group": "Mastery",
+    "metric": "upgrades_purchased",
+    "target": 1,
+    "rewards": {
+      "coins": 100,
+      "gems": 5
+    }
+  },
+  "scholar": {
+    "title": "Scholar",
+    "description": "Earn one thousand lifetime XP.",
+    "group": "Mastery",
+    "metric": "total_xp",
+    "target": 1000,
+    "rewards": {
+      "coins": 300,
+      "gems": 20
+    }
+  },
+  "realm_collector": {
+    "title": "Realm Collector",
+    "description": "Own forty-five different champions.",
+    "group": "Collection",
+    "metric": "unlocked_cards",
+    "target": 45,
+    "rewards": {
+      "coins": 1000,
+      "gems": 100
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Build tooling is separate from the game's minimal runtime dependency.
+-r requirements.txt
+pygame==2.6.1
+pyinstaller==6.22.3

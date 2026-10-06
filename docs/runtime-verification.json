@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "frozen": false,
+  "python": "3.11.2",
+  "platform": "linux",
+  "checks": [
+    {
+      "name": "bundled_data",
+      "passed": true,
+      "detail": "45 cards; 0 data warnings"
+    },
+    {
+      "name": "isolated_save",
+      "passed": true,
+      "detail": "Temporary profile created without accessing personal save"
+    },
+    {
+      "name": "font_fallback",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "missing_image_fallback",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "bundled_sound_effects",
+      "passed": true,
+      "detail": "All nine shipped effects decoded through SDL dummy audio"
+    },
+    {
+      "name": "music_menu",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "music_battle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "all_screens",
+      "passed": true,
+      "detail": "menu, play, decks, collection, upgrades, packs, settings, journal, help, achievements"
+    },
+    {
+      "name": "menu_play_event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "start_match_event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "first_round_event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "checkpoint_restore",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_reward_replay",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "quick_match_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "classic_match_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "practice_no_rewards",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "journal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "pack_purchase",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "achievement_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "duplicate_claim_blocked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "card_upgrade",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "deck_workshop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "resolution_1280",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "resolution_1920",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "save_write",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "save_reload",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "pygame": "2.6.1"
+}

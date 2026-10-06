@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "status": "failed",
+  "python": "3.11.2",
+  "platform": "Linux",
+  "preflight": [
+    {
+      "name": "python_version",
+      "passed": false,
+      "detail": "Python 3.11.2; install Python 3.12+ to build a supported release."
+    },
+    {
+      "name": "host_platform",
+      "passed": true,
+      "detail": "This release builder targets its current Windows/Linux host, not another OS."
+    },
+    {
+      "name": "pygame",
+      "passed": true,
+      "detail": "Install build dependencies: python -m pip install -r requirements-build.txt"
+    },
+    {
+      "name": "PyInstaller",
+      "passed": true,
+      "detail": "Install build dependencies: python -m pip install -r requirements-build.txt"
+    },
+    {
+      "name": "python_shared_library",
+      "passed": false,
+      "detail": "Shared Python library unavailable. Use a standard python.org Windows installation, a setup-python CI runtime, or install the matching libpython package on Linux. ERROR: ERROR: Python shared library ('libpython3.11.so.1.0') was not found! If you are using system python on Debian/Ubuntu, you might need to install a separate package by running `apt install libpython3.11`.\n"
+    }
+  ],
+  "steps": [],
+  "error": "Build prerequisites are missing; inspect the preflight checks."
+}

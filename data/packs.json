@@ -1,0 +1,80 @@
+{
+  "Starter": {
+    "price": 20,
+    "count": 3,
+    "currency": "gems",
+    "weights": {
+      "Common": 50,
+      "Uncommon": 25,
+      "Rare": 14,
+      "Epic": 7,
+      "Legendary": 3,
+      "Mythic": 1
+    }
+  },
+  "Bronze": {
+    "price": 35,
+    "count": 3,
+    "currency": "gems",
+    "weights": {
+      "Common": 50,
+      "Uncommon": 25,
+      "Rare": 14,
+      "Epic": 7,
+      "Legendary": 3,
+      "Mythic": 1
+    }
+  },
+  "Silver": {
+    "price": 60,
+    "count": 5,
+    "currency": "gems",
+    "weights": {
+      "Common": 20,
+      "Uncommon": 30,
+      "Rare": 28,
+      "Epic": 15,
+      "Legendary": 6,
+      "Mythic": 1
+    }
+  },
+  "Gold": {
+    "price": 100,
+    "count": 5,
+    "currency": "gems",
+    "weights": {
+      "Common": 5,
+      "Uncommon": 15,
+      "Rare": 35,
+      "Epic": 28,
+      "Legendary": 14,
+      "Mythic": 3
+    }
+  },
+  "Diamond": {
+    "price": 160,
+    "count": 7,
+    "currency": "gems",
+    "weights": {
+      "Common": 0,
+      "Uncommon": 5,
+      "Rare": 25,
+      "Epic": 40,
+      "Legendary": 23,
+      "Mythic": 7
+    }
+  },
+  "Mythic": {
+    "price": 250,
+    "count": 10,
+    "currency": "gems",
+    "weights": {
+      "Common": 0,
+      "Uncommon": 0,
+      "Rare": 10,
+      "Epic": 35,
+      "Legendary": 35,
+      "Mythic": 20
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "Shield": {
+    "effect": "debuff",
+    "amount": 8,
+    "description": "Reduce opposing comparison strength by 8.",
+    "ai_strength_estimate": 8
+  },
+  "Heal": {
+    "effect": "heal",
+    "amount": 12,
+    "description": "Recover 12 HP (max 100); +2 strength at full HP.",
+    "ai_strength_estimate": 2
+  },
+  "Freeze": {
+    "effect": "freeze",
+    "amount": 6,
+    "description": "Reduce enemy strength by 6 on the next round.",
+    "ai_strength_estimate": 0
+  },
+  "Poison": {
+    "effect": "poison",
+    "amount": 4,
+    "duration": 2,
+    "description": "Reduce enemy strength by 4 for the next two rounds.",
+    "ai_strength_estimate": 0
+  },
+  "Curse": {
+    "effect": "debuff",
+    "amount": 10,
+    "description": "Reduce opposing comparison strength by 10.",
+    "ai_strength_estimate": 10
+  },
+  "Critical Strike": {
+    "effect": "critical",
+    "amount": 20,
+    "chance": 0.35,
+    "description": "35% chance of +20 comparison strength.",
+    "ai_strength_estimate": 7
+  },
+  "Mirror": {
+    "effect": "mirror",
+    "description": "Use the opponent's ability against them.",
+    "ai_strength_estimate": 5
+  },
+  "Copy": {
+    "effect": "copy",
+    "description": "Copy the opposing ability this round.",
+    "ai_strength_estimate": 5
+  },
+  "Double Attack": {
+    "effect": "boost",
+    "amount": 12,
+    "description": "Two +6 strikes, worth +12 comparison strength.",
+    "ai_strength_estimate": 12
+  },
+  "Counter": {
+    "effect": "counter",
+    "amount": 15,
+    "description": "Gain 15 strength when initially behind.",
+    "ai_strength_estimate": 7
+  },
+  "Revive": {
+    "effect": "revive",
+    "amount": 18,
+    "description": "Gain 18 strength after losing the previous round.",
+    "ai_strength_estimate": 5
+  },
+  "Boost": {
+    "effect": "boost",
+    "amount": 9,
+    "description": "Gain 9 comparison strength.",
+    "ai_strength_estimate": 9
+  },
+  "Silence": {
+    "effect": "silence",
+    "description": "Prevent the enemy ability this round.",
+    "ai_strength_estimate": 5
+  },
+  "Dodge": {
+    "effect": "dodge",
+    "amount": 14,
+    "chance": 0.4,
+    "description": "40% chance to reduce enemy strength by 14.",
+    "ai_strength_estimate": 5.6
+  },
+  "Rage": {
+    "effect": "rage",
+    "amount": 14,
+    "threshold": 80,
+    "description": "Gain 14 strength if Power is at least 80.",
+    "ai_strength_estimate": 14
+  }
+}
