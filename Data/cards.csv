@@ -1,0 +1,51 @@
+Name,CardId,DisplayName,Category,Rarity,Ability,Flavor,Power,Speed,Height,Defense,Intelligence,Stamina,Luck,Age,ArtworkFile
+FCB-001,FCB-001,"Emberclaw, the Ash Dragon",Dragon,Legendary,Inferno Breath,It does not hoard gold. It hoards last words.,79,76,59,67,70,17,98,25,Assets/Artwork/Cards/FCB-001_Emberclaw.png
+FCB-002,FCB-002,"Sylvaris, Thornback Behemoth",Legendary Beast,Epic,Regrowth,The forest walks when Sylvaris dreams.,72,53,24,74,71,75,72,48,Assets/Artwork/Cards/FCB-002_Sylvaris.png
+FCB-003,FCB-003,Kael the Dawnblade,Warrior,Rare,Dawn Strike,His sword rises before the sun dares to.,58,66,52,23,58,61,61,73,Assets/Artwork/Cards/FCB-003_Kael.png
+FCB-004,FCB-004,"Nyx, Mistress of Hollow Stars",Celestial,Mythic,Starfall Veil,She counts stars the way others count debts.,76,72,99,23,75,62,72,54,Assets/Artwork/Cards/FCB-004_Nyx.png
+FCB-005,FCB-005,Brondar Stonefist,Ancient Guardian,Uncommon,Stone Skin,Mountains apologize when he stumbles.,66,19,54,56,52,45,59,85,Assets/Artwork/Cards/FCB-005_Brondar_Stonefist.png
+FCB-006,FCB-006,Vespera Nightwing,Monster,Rare,Silent Glide,You will hear her only in memory.,58,67,71,14,60,69,55,69,Assets/Artwork/Cards/FCB-006_Vespera_Nightwing.png
+FCB-007,FCB-007,Thalor the Tidecaller,Wizard,Epic,Tidal Surge,The sea answers him out of habit.,61,57,52,76,60,61,33,57,Assets/Artwork/Cards/FCB-007_Thalor.png
+FCB-008,FCB-008,"Ignivar, Forge of Wrath",Construct,Legendary,Molten Core,Built to end a war. Still warming up.,94,80,74,82,78,16,63,96,Assets/Artwork/Cards/FCB-008_Ignivar.png
+FCB-009,FCB-009,Aelindra Moonweaver,Wizard,Rare,Moonweave,She knits moonlight into armor.,73,69,54,63,68,48,26,83,Assets/Artwork/Cards/FCB-009_Aelindra_Moonweaver.png
+FCB-010,FCB-010,Gorath the Skullrender,Monster,Epic,Frenzy,Diplomacy was tried once. Once.,56,64,63,65,75,74,17,82,Assets/Artwork/Cards/FCB-010_Gorath.png
+FCB-011,FCB-011,Seraphine of the Ninth Choir,Celestial,Legendary,Hymn of Dawn,Her silence has perfect pitch.,76,14,64,59,69,61,83,75,Assets/Artwork/Cards/FCB-011_Seraphine_of.png
+FCB-012,FCB-012,"Kragg, Oathbound Colossus",Ancient Guardian,Rare,Oathshield,He swore to hold the pass. He is the pass.,55,47,51,26,65,57,70,29,Assets/Artwork/Cards/FCB-012_Kragg.png
+FCB-013,FCB-013,Zephyra Stormdancer,Elemental,Uncommon,Tailwind,"She has never once arrived on time, only early.",61,21,46,42,47,59,53,31,Assets/Artwork/Cards/FCB-013_Zephyra_Stormdancer.png
+FCB-014,FCB-014,Morgath Hollowking,Warrior,Epic,Grave Oath,His crown is heavy with unfinished business.,75,71,69,80,73,70,31,17,Assets/Artwork/Cards/FCB-014_Morgath_Hollowking.png
+FCB-015,FCB-015,Pyrra Cinderheart,Elemental,Common,Ember Spark,Small flame. Enormous opinions.,48,42,29,46,72,50,47,57,Assets/Artwork/Cards/FCB-015_Pyrra_Cinderheart.png
+FCB-016,FCB-016,Ulfgar Frostmaul,Warrior,Uncommon,Frostbite,Winter trained under him.,44,48,61,68,57,30,50,51,Assets/Artwork/Cards/FCB-016_Ulfgar_Frostmaul.png
+FCB-017,FCB-017,The Verdant Matriarch,Legendary Beast,Legendary,Wild Communion,Every root in the valley calls her mother.,67,68,67,23,90,75,67,55,Assets/Artwork/Cards/FCB-017_The_Verdant_Matriarch.png
+FCB-018,FCB-018,"Ossivane, Keeper of Tombs",Ancient Guardian,Epic,Tomb Ward,Nothing leaves his archive without permission.,26,68,56,54,78,59,71,95,Assets/Artwork/Cards/FCB-018_Ossivane.png
+FCB-019,FCB-019,Lyrix Quickfingers,Warrior,Common,Pickpocket,Your pockets feel lighter already.,45,53,52,61,27,44,52,30,Assets/Artwork/Cards/FCB-019_Lyrix_Quickfingers.png
+FCB-020,FCB-020,Drakmor the Sunken Maw,Dragon,Epic,Abyssal Bite,"Sailors pray to weather, not to him.",52,57,29,63,88,77,57,80,Assets/Artwork/Cards/FCB-020_Drakmor.png
+FCB-021,FCB-021,Celestine Dawn Herald,Celestial,Rare,Radiant Herald,A legend still being written.,49,57,31,51,72,60,55,58,Assets/Artwork/Cards/FCB-021_Celestine_Dawn_Herald.png
+FCB-022,FCB-022,Bram Bleakwood Ranger,Warrior,Common,Thorn Shot,The trees aim with him.,48,54,42,43,46,46,22,23,Assets/Artwork/Cards/FCB-022_Bram_Bleakwood_Ranger.png
+FCB-023,FCB-023,"Vexalia, Duchess of Thorns",Wizard,Epic,Thornbind,Every rose in her garden has drawn blood.,55,21,61,86,66,69,70,86,Assets/Artwork/Cards/FCB-023_Vexalia.png
+FCB-024,FCB-024,Tormund Ironveil,Warrior,Rare,Ironveil Stance,Armor first. Questions later.,58,57,20,64,47,68,56,80,Assets/Artwork/Cards/FCB-024_Tormund_Ironveil.png
+FCB-025,FCB-025,Asha Ember Oracle,Wizard,Uncommon,Ember Sight,She reads futures in cooling ash.,58,52,62,59,60,29,52,94,Assets/Artwork/Cards/FCB-025_Asha_Ember_Oracle.png
+FCB-026,FCB-026,Grendelok Worldgnawer,Monster,Mythic,Worldgnaw,Continents are just slow prey.,68,28,72,68,82,73,79,89,Assets/Artwork/Cards/FCB-026_Grendelok_Worldgnawer.png
+FCB-027,FCB-027,Sylphine Gale Duchess,Elemental,Rare,Gale Step,"Court etiquette, at hurricane speed.",56,57,55,53,28,56,63,41,Assets/Artwork/Cards/FCB-027_Sylphine_Gale_Duchess.png
+FCB-028,FCB-028,Korvath Chainbreaker,Warrior,Epic,Broken Chains,No lock has survived his introduction.,52,75,66,75,73,21,66,64,Assets/Artwork/Cards/FCB-028_Korvath_Chainbreaker.png
+FCB-029,FCB-029,Isolde Wintermere Queen,Wizard,Legendary,Eternal Winter,Spring filed a formal complaint.,12,68,75,64,83,70,89,85,Assets/Artwork/Cards/FCB-029_Isolde_Wintermere_Queen.png
+FCB-030,FCB-030,Rumblefist Automaton IX,Construct,Uncommon,Overclock,Ninth of his line. First to improvise.,54,56,28,75,53,60,58,88,Assets/Artwork/Cards/FCB-030_Rumblefist_Automaton_IX.png
+FCB-031,FCB-031,Fenwick Marshlight Wisp,Elemental,Common,Marshlight,"Follow the light, if you trust lights.",70,46,49,51,41,56,20,57,Assets/Artwork/Cards/FCB-031_Fenwick_Marshlight_Wisp.png
+FCB-032,FCB-032,Aurora Vex Starforge,Construct,Legendary,Starforge,She hammers constellations into blades.,77,72,85,98,66,58,32,45,Assets/Artwork/Cards/FCB-032_Aurora_Vex_Starforge.png
+FCB-033,FCB-033,Skarn Venomtail,Monster,Uncommon,Venom Tail,His handshake is a medical event.,50,18,58,49,60,57,43,44,Assets/Artwork/Cards/FCB-033_Skarn_Venomtail.png
+FCB-034,FCB-034,Helka Doomcaller,Wizard,Rare,Doomcall,Prophecies fear being spoken by her.,69,68,53,32,48,48,63,34,Assets/Artwork/Cards/FCB-034_Helka_Doomcaller.png
+FCB-035,FCB-035,Oberon Thistlecrown,Legendary Beast,Rare,Thistlecrown,The old forest still holds coronations.,76,61,12,55,52,55,69,30,Assets/Artwork/Cards/FCB-035_Oberon_Thistlecrown.png
+FCB-036,FCB-036,Magmara Core Titan,Elemental,Legendary,Core Eruption,Geologists study him from very far away.,79,12,69,64,70,67,71,34,Assets/Artwork/Cards/FCB-036_Magmara_Core_Titan.png
+FCB-037,FCB-037,Yuna Silent Petal,Warrior,Uncommon,Silent Petal,The duel ended before the petal landed.,50,57,60,57,29,63,44,44,Assets/Artwork/Cards/FCB-037_Yuna_Silent_Petal.png
+FCB-038,FCB-038,Noctis Umbral Wyrm,Dragon,Mythic,Umbral Devour,It eats light as an appetizer.,64,82,81,63,29,79,69,26,Assets/Artwork/Cards/FCB-038_Noctis_Umbral_Wyrm.png
+FCB-039,FCB-039,Petra Bastion Ward,Ancient Guardian,Common,Ward Stance,A wall with excellent manners.,57,43,17,47,47,47,40,18,Assets/Artwork/Cards/FCB-039_Petra_Bastion_Ward.png
+FCB-040,FCB-040,Cassian Goldtongue,Warrior,Rare,Golden Lie,His treaties sign themselves.,71,12,62,48,67,65,68,28,Assets/Artwork/Cards/FCB-040_Cassian_Goldtongue.png
+FCB-041,FCB-041,Rhea Stormmother,Elemental,Epic,Stormmother,Thunder asks her permission.,59,81,25,61,74,59,72,65,Assets/Artwork/Cards/FCB-041_Rhea_Stormmother.png
+FCB-042,FCB-042,Vorath Deepcoil,Monster,Rare,Deepcoil,The trench has a heartbeat. It is his.,57,74,47,64,51,48,33,91,Assets/Artwork/Cards/FCB-042_Vorath_Deepcoil.png
+FCB-043,FCB-043,Elaria Sunpetal Druid,Wizard,Common,Sunpetal Bloom,"Kindness, weaponized gently.",42,19,72,55,47,57,53,54,Assets/Artwork/Cards/FCB-043_Elaria_Sunpetal_Druid.png
+FCB-044,FCB-044,Dain Copperbeard Smith,Construct,Common,Forgehand,"He shoes horses and, once, a volcano.",57,45,47,67,55,44,27,77,Assets/Artwork/Cards/FCB-044_Dain_Copperbeard_Smith.png
+FCB-045,FCB-045,Morwenna Gravebloom,Wizard,Epic,Gravebloom,Her garden only grows at funerals.,72,24,71,63,85,72,74,72,Assets/Artwork/Cards/FCB-045_Morwenna_Gravebloom.png
+FCB-046,FCB-046,Talos Verdigris Sentinel,Construct,Rare,Sentinel Protocol,"Rust is just experience, oxidized.",81,62,69,33,63,62,66,50,Assets/Artwork/Cards/FCB-046_Talos_Verdigris_Sentinel.png
+FCB-047,FCB-047,Aurelion Sky Sovereign,Celestial,Mythic,Sovereign Dawn,"Even eclipses bow, briefly.",86,86,64,72,67,28,86,86,Assets/Artwork/Cards/FCB-047_Aurelion_Sky_Sovereign.png
+FCB-048,FCB-048,Nibbles the Terrible,Monster,Common,Terrible Nibbling,Do not let the name fool you. Or do.,39,45,47,47,31,42,69,20,Assets/Artwork/Cards/FCB-048_Nibbles.png
+FCB-049,FCB-049,Karash Dune Revenant,Warrior,Rare,Dune Revenant,The desert keeps what it buries. Mostly.,21,50,69,62,62,56,48,48,Assets/Artwork/Cards/FCB-049_Karash_Dune_Revenant.png
+FCB-050,FCB-050,Selvara Crystaltide Sage,Wizard,Epic,Crystaltide,She argues with oceans. She wins.,86,13,75,72,53,64,75,36,Assets/Artwork/Cards/FCB-050_Selvara_Crystaltide_Sage.png

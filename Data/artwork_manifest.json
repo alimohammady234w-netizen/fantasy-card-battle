@@ -1,0 +1,302 @@
+[
+ {
+  "cardId": "FCB-001",
+  "name": "Emberclaw, the Ash Dragon",
+  "artwork": "Assets/Artwork/Cards/FCB-001_Emberclaw.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-001_Emberclaw"
+ },
+ {
+  "cardId": "FCB-002",
+  "name": "Sylvaris, Thornback Behemoth",
+  "artwork": "Assets/Artwork/Cards/FCB-002_Sylvaris.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-002_Sylvaris"
+ },
+ {
+  "cardId": "FCB-003",
+  "name": "Kael the Dawnblade",
+  "artwork": "Assets/Artwork/Cards/FCB-003_Kael.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-003_Kael"
+ },
+ {
+  "cardId": "FCB-004",
+  "name": "Nyx, Mistress of Hollow Stars",
+  "artwork": "Assets/Artwork/Cards/FCB-004_Nyx.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-004_Nyx"
+ },
+ {
+  "cardId": "FCB-005",
+  "name": "Brondar Stonefist",
+  "artwork": "Assets/Artwork/Cards/FCB-005_Brondar_Stonefist.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-005_Brondar_Stonefist"
+ },
+ {
+  "cardId": "FCB-006",
+  "name": "Vespera Nightwing",
+  "artwork": "Assets/Artwork/Cards/FCB-006_Vespera_Nightwing.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-006_Vespera_Nightwing"
+ },
+ {
+  "cardId": "FCB-007",
+  "name": "Thalor the Tidecaller",
+  "artwork": "Assets/Artwork/Cards/FCB-007_Thalor.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-007_Thalor"
+ },
+ {
+  "cardId": "FCB-008",
+  "name": "Ignivar, Forge of Wrath",
+  "artwork": "Assets/Artwork/Cards/FCB-008_Ignivar.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-008_Ignivar"
+ },
+ {
+  "cardId": "FCB-009",
+  "name": "Aelindra Moonweaver",
+  "artwork": "Assets/Artwork/Cards/FCB-009_Aelindra_Moonweaver.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-009_Aelindra_Moonweaver"
+ },
+ {
+  "cardId": "FCB-010",
+  "name": "Gorath the Skullrender",
+  "artwork": "Assets/Artwork/Cards/FCB-010_Gorath.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-010_Gorath"
+ },
+ {
+  "cardId": "FCB-011",
+  "name": "Seraphine of the Ninth Choir",
+  "artwork": "Assets/Artwork/Cards/FCB-011_Seraphine_of.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-011_Seraphine_of"
+ },
+ {
+  "cardId": "FCB-012",
+  "name": "Kragg, Oathbound Colossus",
+  "artwork": "Assets/Artwork/Cards/FCB-012_Kragg.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-012_Kragg"
+ },
+ {
+  "cardId": "FCB-013",
+  "name": "Zephyra Stormdancer",
+  "artwork": "Assets/Artwork/Cards/FCB-013_Zephyra_Stormdancer.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-013_Zephyra_Stormdancer"
+ },
+ {
+  "cardId": "FCB-014",
+  "name": "Morgath Hollowking",
+  "artwork": "Assets/Artwork/Cards/FCB-014_Morgath_Hollowking.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-014_Morgath_Hollowking"
+ },
+ {
+  "cardId": "FCB-015",
+  "name": "Pyrra Cinderheart",
+  "artwork": "Assets/Artwork/Cards/FCB-015_Pyrra_Cinderheart.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-015_Pyrra_Cinderheart"
+ },
+ {
+  "cardId": "FCB-016",
+  "name": "Ulfgar Frostmaul",
+  "artwork": "Assets/Artwork/Cards/FCB-016_Ulfgar_Frostmaul.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-016_Ulfgar_Frostmaul"
+ },
+ {
+  "cardId": "FCB-017",
+  "name": "The Verdant Matriarch",
+  "artwork": "Assets/Artwork/Cards/FCB-017_The_Verdant_Matriarch.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-017_The_Verdant_Matriarch"
+ },
+ {
+  "cardId": "FCB-018",
+  "name": "Ossivane, Keeper of Tombs",
+  "artwork": "Assets/Artwork/Cards/FCB-018_Ossivane.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-018_Ossivane"
+ },
+ {
+  "cardId": "FCB-019",
+  "name": "Lyrix Quickfingers",
+  "artwork": "Assets/Artwork/Cards/FCB-019_Lyrix_Quickfingers.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-019_Lyrix_Quickfingers"
+ },
+ {
+  "cardId": "FCB-020",
+  "name": "Drakmor the Sunken Maw",
+  "artwork": "Assets/Artwork/Cards/FCB-020_Drakmor.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-020_Drakmor"
+ },
+ {
+  "cardId": "FCB-021",
+  "name": "Celestine Dawn Herald",
+  "artwork": "Assets/Artwork/Cards/FCB-021_Celestine_Dawn_Herald.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-021_Celestine_Dawn_Herald"
+ },
+ {
+  "cardId": "FCB-022",
+  "name": "Bram Bleakwood Ranger",
+  "artwork": "Assets/Artwork/Cards/FCB-022_Bram_Bleakwood_Ranger.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-022_Bram_Bleakwood_Ranger"
+ },
+ {
+  "cardId": "FCB-023",
+  "name": "Vexalia, Duchess of Thorns",
+  "artwork": "Assets/Artwork/Cards/FCB-023_Vexalia.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-023_Vexalia"
+ },
+ {
+  "cardId": "FCB-024",
+  "name": "Tormund Ironveil",
+  "artwork": "Assets/Artwork/Cards/FCB-024_Tormund_Ironveil.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-024_Tormund_Ironveil"
+ },
+ {
+  "cardId": "FCB-025",
+  "name": "Asha Ember Oracle",
+  "artwork": "Assets/Artwork/Cards/FCB-025_Asha_Ember_Oracle.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-025_Asha_Ember_Oracle"
+ },
+ {
+  "cardId": "FCB-026",
+  "name": "Grendelok Worldgnawer",
+  "artwork": "Assets/Artwork/Cards/FCB-026_Grendelok_Worldgnawer.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-026_Grendelok_Worldgnawer"
+ },
+ {
+  "cardId": "FCB-027",
+  "name": "Sylphine Gale Duchess",
+  "artwork": "Assets/Artwork/Cards/FCB-027_Sylphine_Gale_Duchess.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-027_Sylphine_Gale_Duchess"
+ },
+ {
+  "cardId": "FCB-028",
+  "name": "Korvath Chainbreaker",
+  "artwork": "Assets/Artwork/Cards/FCB-028_Korvath_Chainbreaker.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-028_Korvath_Chainbreaker"
+ },
+ {
+  "cardId": "FCB-029",
+  "name": "Isolde Wintermere Queen",
+  "artwork": "Assets/Artwork/Cards/FCB-029_Isolde_Wintermere_Queen.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-029_Isolde_Wintermere_Queen"
+ },
+ {
+  "cardId": "FCB-030",
+  "name": "Rumblefist Automaton IX",
+  "artwork": "Assets/Artwork/Cards/FCB-030_Rumblefist_Automaton_IX.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-030_Rumblefist_Automaton_IX"
+ },
+ {
+  "cardId": "FCB-031",
+  "name": "Fenwick Marshlight Wisp",
+  "artwork": "Assets/Artwork/Cards/FCB-031_Fenwick_Marshlight_Wisp.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-031_Fenwick_Marshlight_Wisp"
+ },
+ {
+  "cardId": "FCB-032",
+  "name": "Aurora Vex Starforge",
+  "artwork": "Assets/Artwork/Cards/FCB-032_Aurora_Vex_Starforge.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-032_Aurora_Vex_Starforge"
+ },
+ {
+  "cardId": "FCB-033",
+  "name": "Skarn Venomtail",
+  "artwork": "Assets/Artwork/Cards/FCB-033_Skarn_Venomtail.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-033_Skarn_Venomtail"
+ },
+ {
+  "cardId": "FCB-034",
+  "name": "Helka Doomcaller",
+  "artwork": "Assets/Artwork/Cards/FCB-034_Helka_Doomcaller.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-034_Helka_Doomcaller"
+ },
+ {
+  "cardId": "FCB-035",
+  "name": "Oberon Thistlecrown",
+  "artwork": "Assets/Artwork/Cards/FCB-035_Oberon_Thistlecrown.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-035_Oberon_Thistlecrown"
+ },
+ {
+  "cardId": "FCB-036",
+  "name": "Magmara Core Titan",
+  "artwork": "Assets/Artwork/Cards/FCB-036_Magmara_Core_Titan.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-036_Magmara_Core_Titan"
+ },
+ {
+  "cardId": "FCB-037",
+  "name": "Yuna Silent Petal",
+  "artwork": "Assets/Artwork/Cards/FCB-037_Yuna_Silent_Petal.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-037_Yuna_Silent_Petal"
+ },
+ {
+  "cardId": "FCB-038",
+  "name": "Noctis Umbral Wyrm",
+  "artwork": "Assets/Artwork/Cards/FCB-038_Noctis_Umbral_Wyrm.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-038_Noctis_Umbral_Wyrm"
+ },
+ {
+  "cardId": "FCB-039",
+  "name": "Petra Bastion Ward",
+  "artwork": "Assets/Artwork/Cards/FCB-039_Petra_Bastion_Ward.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-039_Petra_Bastion_Ward"
+ },
+ {
+  "cardId": "FCB-040",
+  "name": "Cassian Goldtongue",
+  "artwork": "Assets/Artwork/Cards/FCB-040_Cassian_Goldtongue.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-040_Cassian_Goldtongue"
+ },
+ {
+  "cardId": "FCB-041",
+  "name": "Rhea Stormmother",
+  "artwork": "Assets/Artwork/Cards/FCB-041_Rhea_Stormmother.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-041_Rhea_Stormmother"
+ },
+ {
+  "cardId": "FCB-042",
+  "name": "Vorath Deepcoil",
+  "artwork": "Assets/Artwork/Cards/FCB-042_Vorath_Deepcoil.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-042_Vorath_Deepcoil"
+ },
+ {
+  "cardId": "FCB-043",
+  "name": "Elaria Sunpetal Druid",
+  "artwork": "Assets/Artwork/Cards/FCB-043_Elaria_Sunpetal_Druid.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-043_Elaria_Sunpetal_Druid"
+ },
+ {
+  "cardId": "FCB-044",
+  "name": "Dain Copperbeard Smith",
+  "artwork": "Assets/Artwork/Cards/FCB-044_Dain_Copperbeard_Smith.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-044_Dain_Copperbeard_Smith"
+ },
+ {
+  "cardId": "FCB-045",
+  "name": "Morwenna Gravebloom",
+  "artwork": "Assets/Artwork/Cards/FCB-045_Morwenna_Gravebloom.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-045_Morwenna_Gravebloom"
+ },
+ {
+  "cardId": "FCB-046",
+  "name": "Talos Verdigris Sentinel",
+  "artwork": "Assets/Artwork/Cards/FCB-046_Talos_Verdigris_Sentinel.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-046_Talos_Verdigris_Sentinel"
+ },
+ {
+  "cardId": "FCB-047",
+  "name": "Aurelion Sky Sovereign",
+  "artwork": "Assets/Artwork/Cards/FCB-047_Aurelion_Sky_Sovereign.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-047_Aurelion_Sky_Sovereign"
+ },
+ {
+  "cardId": "FCB-048",
+  "name": "Nibbles the Terrible",
+  "artwork": "Assets/Artwork/Cards/FCB-048_Nibbles.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-048_Nibbles"
+ },
+ {
+  "cardId": "FCB-049",
+  "name": "Karash Dune Revenant",
+  "artwork": "Assets/Artwork/Cards/FCB-049_Karash_Dune_Revenant.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-049_Karash_Dune_Revenant"
+ },
+ {
+  "cardId": "FCB-050",
+  "name": "Selvara Crystaltide Sage",
+  "artwork": "Assets/Artwork/Cards/FCB-050_Selvara_Crystaltide_Sage.png",
+  "ueTextureImportPath": "/Game/Cards/Art/FCB-050_Selvara_Crystaltide_Sage"
+ }
+]
