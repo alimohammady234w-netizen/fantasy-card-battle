@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fantasy Card Battle</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Fantasy Card Battle</p>
+          <h1>Legendary Duel</h1>
+        </div>
+        <button id="newGameBtn" class="primary-btn">New Game</button>
+      </header>
+
+      <section class="status-panel">
+        <div class="status-box">
+          <span>Player Deck</span>
+          <strong id="playerDeckCount">0</strong>
+        </div>
+        <div class="status-box highlight">
+          <span>Round</span>
+          <strong id="roundCount">1</strong>
+        </div>
+        <div class="status-box">
+          <span>AI Deck</span>
+          <strong id="aiDeckCount">0</strong>
+        </div>
+      </section>
+
+      <section class="arena">
+        <div class="card-panel player-panel">
+          <div class="card-header">
+            <span>Player</span>
+            <span id="playerNameBadge" class="badge">Hero</span>
+          </div>
+          <div id="playerCard" class="card card-player"></div>
+        </div>
+
+        <div class="battle-center">
+          <div class="attribute-picker" id="attributePicker"></div>
+          <button id="battleBtn" class="battle-btn">Battle</button>
+        </div>
+
+        <div class="card-panel ai-panel">
+          <div class="card-header">
+            <span>AI</span>
+            <span class="badge hostile">Enemy</span>
+          </div>
+          <div id="aiCard" class="card card-ai"></div>
+        </div>
+      </section>
+
+      <section class="result-panel">
+        <div id="battleMessage" class="message">Choose a stat to begin the duel.</div>
+      </section>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

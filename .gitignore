@@ -1,0 +1,199 @@
+const attributeMeta = [
+  { key: 'age', label: 'Age', icon: '⏳' },
+  { key: 'power', label: 'Power', icon: '⚔️' },
+  { key: 'speed', label: 'Speed', icon: '💨' },
+  { key: 'height', label: 'Height', icon: '🏔️' },
+];
+
+const cardPool = [
+  { name: 'Aldric', sigil: '🛡️', title: 'Frost Knight', age: 184, power: 92, speed: 68, height: 214 },
+  { name: 'Mira', sigil: '✨', title: 'Moon Mage', age: 109, power: 78, speed: 87, height: 178 },
+  { name: 'Thorne', sigil: '🌿', title: 'Forest Warden', age: 436, power: 85, speed: 51, height: 310 },
+  { name: 'Veyra', sigil: '🔥', title: 'Ash Dragon', age: 287, power: 96, speed: 80, height: 430 },
+  { name: 'Bram', sigil: '🪓', title: 'Stone Berserker', age: 203, power: 90, speed: 44, height: 256 },
+  { name: 'Selene', sigil: '🌙', title: 'Star Priestess', age: 176, power: 74, speed: 82, height: 160 },
+  { name: 'Orin', sigil: '🌪️', title: 'Storm Rider', age: 168, power: 81, speed: 95, height: 200 },
+  { name: 'Nyx', sigil: '🩸', title: 'Night Stalker', age: 131, power: 88, speed: 91, height: 185 },
+  { name: 'Grom', sigil: '🦴', title: 'Bone Titan', age: 504, power: 98, speed: 32, height: 420 },
+  { name: 'Liora', sigil: '🌼', title: 'Sun Dancer', age: 96, power: 63, speed: 89, height: 166 },
+  { name: 'Karn', sigil: '🌋', title: 'Volcanic Giant', age: 340, power: 94, speed: 39, height: 520 },
+  { name: 'Eira', sigil: '❄️', title: 'Glacier Witch', age: 238, power: 77, speed: 70, height: 178 },
+  { name: 'Rook', sigil: '🦅', title: 'Sky Hunter', age: 128, power: 71, speed: 93, height: 190 },
+  { name: 'Sable', sigil: '🕷️', title: 'Web Weaver', age: 159, power: 76, speed: 86, height: 172 },
+  { name: 'Doran', sigil: '🏹', title: 'Wild Ranger', age: 142, power: 83, speed: 84, height: 205 },
+  { name: 'Ilya', sigil: '💧', title: 'River Mystic', age: 211, power: 67, speed: 79, height: 170 },
+  { name: 'Cairn', sigil: '⛰️', title: 'Mountain Sentinel', age: 467, power: 89, speed: 41, height: 600 },
+  { name: 'Tavin', sigil: '🔮', title: 'Crystal Seer', age: 205, power: 70, speed: 83, height: 180 },
+  { name: 'Zor', sigil: '⚙️', title: 'Iron Colossus', age: 390, power: 97, speed: 35, height: 470 },
+  { name: 'Nessa', sigil: '🌟', title: 'Starforged Archer', age: 144, power: 82, speed: 92, height: 174 },
+  { name: 'Harrow', sigil: '🕯️', title: 'Dark Monk', age: 268, power: 86, speed: 60, height: 184 },
+  { name: 'Tessa', sigil: '🍃', title: 'Bloom Guardian', age: 118, power: 72, speed: 74, height: 168 },
+  { name: 'Ragnar', sigil: '💥', title: 'Thunder Titan', age: 332, power: 95, speed: 64, height: 410 },
+  { name: 'Feyra', sigil: '🦊', title: 'Feral Witch', age: 151, power: 80, speed: 88, height: 166 },
+];
+
+const state = {
+  playerDeck: [],
+  aiDeck: [],
+  selectedAttribute: 'power',
+  round: 1,
+  gameEnded: false,
+};
+
+const attrPicker = document.getElementById('attributePicker');
+const battlefieldMessage = document.getElementById('battleMessage');
+const playerCardEl = document.getElementById('playerCard');
+const aiCardEl = document.getElementById('aiCard');
+const playerDeckCountEl = document.getElementById('playerDeckCount');
+const aiDeckCountEl = document.getElementById('aiDeckCount');
+const roundCountEl = document.getElementById('roundCount');
+
+function shuffle(list) {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function startNewGame() {
+  const shuffled = shuffle(cardPool);
+  const splitIndex = Math.ceil(shuffled.length / 2);
+
+  state.playerDeck = shuffled.slice(0, splitIndex);
+  state.aiDeck = shuffled.slice(splitIndex);
+  state.selectedAttribute = 'power';
+  state.round = 1;
+  state.gameEnded = false;
+
+  renderAttributeButtons();
+  renderBattlefield();
+  setMessage('Choose a stat and strike the next duel.', 'info');
+}
+
+function renderAttributeButtons() {
+  attrPicker.innerHTML = '';
+
+  attributeMeta.forEach((attribute) => {
+    const button = document.createElement('button');
+    button.className = `attribute-btn ${state.selectedAttribute === attribute.key ? 'selected' : ''}`;
+    button.textContent = `${attribute.icon} ${attribute.label}`;
+    button.addEventListener('click', () => {
+      state.selectedAttribute = attribute.key;
+      renderAttributeButtons();
+      setMessage(`Selected attribute: ${attribute.label}. Press Battle to duel.`, 'info');
+    });
+    attrPicker.appendChild(button);
+  });
+}
+
+function buildCardMarkup(card, side = 'player') {
+  if (!card) return '<div class="card-inner"><div class="card-sigil">❔</div><h2 class="card-name">No Card</h2></div>';
+
+  return `
+    <div class="card-inner">
+      <div class="card-sigil">${card.sigil}</div>
+      <h2 class="card-name">${card.name}</h2>
+      <div class="card-title">${card.title}</div>
+      <ul class="stat-list">
+        ${attributeMeta
+          .map(
+            (attribute) => `
+              <li class="stat-item">
+                <span class="stat-label">${attribute.icon} ${attribute.label}</span>
+                <span class="stat-value">${card[attribute.key]}</span>
+              </li>
+            `
+          )
+          .join('')}
+      </ul>
+    </div>
+  `;
+}
+
+function renderBattlefield() {
+  const playerCard = state.playerDeck[0] || null;
+  const aiCard = state.aiDeck[0] || null;
+
+  playerCardEl.innerHTML = buildCardMarkup(playerCard, 'player');
+  aiCardEl.innerHTML = buildCardMarkup(aiCard, 'ai');
+
+  playerDeckCountEl.textContent = state.playerDeck.length;
+  aiDeckCountEl.textContent = state.aiDeck.length;
+  roundCountEl.textContent = state.round;
+}
+
+function setMessage(text, tone = 'info') {
+  battlefieldMessage.textContent = text;
+  battlefieldMessage.className = `message ${tone}`;
+}
+
+function endGame(winner) {
+  state.gameEnded = true;
+  if (winner === 'player') {
+    setMessage('You win the campaign! The kingdom is yours.', 'win');
+  } else if (winner === 'ai') {
+    setMessage('The AI dominates the battlefield. Try a new duel.', 'lose');
+  } else {
+    setMessage('The duel ends in a draw. A new battle is ready.', 'info');
+  }
+}
+
+function battle() {
+  if (state.gameEnded) {
+    setMessage('The game is over. Start a new one to continue.', 'info');
+    return;
+  }
+
+  if (state.playerDeck.length === 0 || state.aiDeck.length === 0) {
+    const winner = state.playerDeck.length > state.aiDeck.length ? 'player' : 'ai';
+    endGame(winner);
+    return;
+  }
+
+  const playerCard = state.playerDeck[0];
+  const aiCard = state.aiDeck[0];
+  const attribute = state.selectedAttribute;
+
+  const playerValue = playerCard[attribute];
+  const aiValue = aiCard[attribute];
+
+  if (playerValue > aiValue) {
+    state.playerDeck.push(state.playerDeck.shift());
+    state.playerDeck.push(state.aiDeck.shift());
+    setMessage(`Victory! ${playerCard.name} beats ${aiCard.name} in ${attributeMeta.find((item) => item.key === attribute).label}.`, 'win');
+  } else if (aiValue > playerValue) {
+    state.aiDeck.push(state.aiDeck.shift());
+    state.aiDeck.push(state.playerDeck.shift());
+    setMessage(`Defeat! ${aiCard.name} outmatches ${playerCard.name} in ${attributeMeta.find((item) => item.key === attribute).label}.`, 'lose');
+  } else {
+    const tieCardA = state.playerDeck.shift();
+    const tieCardB = state.aiDeck.shift();
+    state.playerDeck.push(tieCardA);
+    state.aiDeck.push(tieCardB);
+    setMessage(`Tied on ${attributeMeta.find((item) => item.key === attribute).label}! No cards change hands this round.`, 'info');
+  }
+
+  state.round += 1;
+
+  if (state.playerDeck.length === 0) {
+    endGame('ai');
+    return;
+  }
+
+  if (state.aiDeck.length === 0) {
+    endGame('player');
+    return;
+  }
+
+  renderBattlefield();
+}
+
+function bindEvents() {
+  document.getElementById('newGameBtn').addEventListener('click', startNewGame);
+  document.getElementById('battleBtn').addEventListener('click', battle);
+}
+
+bindEvents();
+startNewGame();
