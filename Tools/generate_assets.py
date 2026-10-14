@@ -170,6 +170,7 @@ def make_art(cid, archetype, palette, seed):
     vd.ellipse([-W*.35, -H*.25, W*1.35, H*1.25], fill=255); v = v.filter(ImageFilter.GaussianBlur(90))
     return Image.composite(img, Image.new("RGB", (W, H), (4, 4, 8)), v)
 
+UPGRADED_ART = {"FCB-001","FCB-004","FCB-008","FCB-017","FCB-026","FCB-032","FCB-038","FCB-047"}  # AI-illustrated; never overwritten
 def main():
     cards, manifest = [], []
     art_dir = os.path.join(ROOT, "Assets", "Artwork", "Cards"); os.makedirs(art_dir, exist_ok=True)
@@ -181,7 +182,7 @@ def main():
                       "element": pal, "ability": ability, "flavor": flavor or "A legend still being written.",
                       "description": "%s — %s of the %s. Ability: %s." % (name, cat, pal, ability),
                       "artwork": "Assets/Artwork/Cards/" + fn, "attributes": make_stats(i, rarity)})
-        make_art(cid, arch, pal, 5000 + i).save(os.path.join(art_dir, fn))
+        if cid not in UPGRADED_ART: make_art(cid, arch, pal, 5000 + i).save(os.path.join(art_dir, fn))  # preserve upgraded art
         manifest.append({"cardId": cid, "name": name, "artwork": "Assets/Artwork/Cards/" + fn,
                          "ueTextureImportPath": "/Game/Cards/Art/%s" % fn[:-4]})
     # Card back + UI emblem

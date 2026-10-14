@@ -24,3 +24,9 @@
 - UE: UMG widgets build buttons **once** and only update labels (no per-round widget construction/name collisions); Main Menu now has functional Progression and Settings (difficulty cycle, persisted) entries.
 - Web: direction picker hidden on AI-prediction rounds; 3D art paths are relative (works under sub-path hosting); upgrade toast fixed.
 - New AI-generated menu key art: `Assets/Artwork/UI/key-art.jpg` (the 50 card illustrations remain the procedural set).
+
+## Round 3 fixes (AI-illustrated card art + balance evidence)
+- **8 marquee cards (all Mythic + key Legendaries) re-illustrated** with dedicated AI artwork: FCB-001 Emberclaw, FCB-004 Nyx, FCB-008 Ignivar, FCB-017 The Verdant Matriarch, FCB-026 Grendelok Worldgnawer, FCB-032 Aurora Vex Starforge, FCB-038 Noctis Umbral Wyrm, FCB-047 Aurelion Sky Sovereign. Filenames/paths unchanged, so `Data/cards.json` and `Data/artwork_manifest.json` still resolve; `artSource` per card is now recorded in the manifest (`ai-illustrated` vs `procedural-silhouette`).
+- `Tools/generate_assets.py` has an `UPGRADED_ART` guard so regeneration never overwrites those 8 files.
+- **Difficulty balance evidence (new, actually run):** `node Tools/balance_sim.mjs` plays 200 AI-vs-AI matches per pairing (both AIs only see their own card + public revealed history). Verified outcome over 200 matches each — expert vs easy 200–0, expert vs normal 197–2 (1 draw), hard vs easy 191–6 (3 draws), normal vs easy 163–26 (11 draws), expert vs hard 143–37 (20 draws). The 4 difficulty tiers are strictly, monotonically ordered.
+- Remaining 42 cards still use the original procedural silhouette art (honestly labeled in the manifest); they can be upgraded the same way later.
