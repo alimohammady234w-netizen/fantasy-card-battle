@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fantasy Card Battle — Legendary Duel</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<section class="screen active" id="screen-menu">
+  <div class="menu-hero">
+    <p class="eyebrow">✦ Premium Fantasy · Single Player · Offline ✦</p>
+    <h1>FANTASY<br>CARD BATTLE</h1>
+    <p class="tagline">Fifty legends. Eight attributes. One prediction. Outwit the AI across a 30-card duel on the arcane table.</p>
+    <nav class="menu-buttons">
+      <button class="btn gold big" data-nav="battle">⚔ Play Battle</button>
+      <button class="btn big" data-nav="collection">🂡 Card Collection</button>
+      <button class="btn big" data-nav="decks">🛠 Deck Builder</button>
+      <button class="btn big" data-nav="progress">⭐ Player Progression</button>
+      <button class="btn big" data-nav="settings">⚙ Settings</button>
+      <button class="btn big danger-ghost" data-nav="exit">Exit</button>
+    </nav>
+    <p class="hint">Progress saves automatically to this browser (localStorage, schema v1, with backup copy).</p>
+  </div>
+</section>
+
+<section class="screen" id="screen-battle">
+  <div class="battle-wrap">
+    <canvas id="gl" aria-label="3D arcane battle table"></canvas>
+    <div class="battle-hud">
+      <div class="hud-top"><button class="btn small" id="quitMatchBtn">← Abandon</button><b id="roundLabel">Round 1</b><span id="scoreLabel"></span><span id="deckLabel"></span></div>
+      <div class="duel-cards">
+        <article class="duel-card player">
+          <img id="pCardArt" alt="Your card artwork"><h3 id="pCardName">—</h3><p id="pCardMeta"></p><div id="pCardAttrs" class="attrs"></div>
+        </article>
+        <div class="vs">VS</div>
+        <article class="duel-card ai">
+          <img id="aCardArt" alt="Opponent card (hidden until reveal)"><h3 id="aCardName">Hidden Card</h3><p>AI Opponent</p><div id="aCardAttrs" class="attrs"></div>
+        </article>
+      </div>
+      <p id="battleMsg" class="battle-msg" aria-live="polite"></p>
+      <div id="attrGrid" class="attr-grid"></div>
+      <div class="dir-row" role="group" aria-label="Prediction direction">
+        <button class="btn dir" data-dir="greater">▲ Mine is GREATER</button>
+        <button class="btn dir" data-dir="less">▼ Mine is LESS</button>
+      </div>
+      <button class="btn gold big" id="lockBtn">🔒 Lock In &amp; Reveal</button>
+      <div id="summary" class="summary hidden"></div>
+      <details class="history"><summary>Round history</summary><ul id="history"></ul></details>
+    </div>
+  </div>
+</section>
+
+<section class="screen" id="screen-collection">
+  <header class="page-head"><button class="btn small" data-nav="menu">← Menu</button><h2>Card Collection</h2><span id="collCount"></span></header>
+  <div class="filters">
+    <input id="collSearch" type="search" placeholder="Search by name…" aria-label="Search cards by name">
+    <select id="collCat" aria-label="Filter by category"></select>
+    <select id="collRarity" aria-label="Filter by rarity"><option value="">All rarities</option><option>Common</option><option>Uncommon</option><option>Rare</option><option>Epic</option><option>Legendary</option><option>Mythic</option></select>
+    <select id="collSort" aria-label="Sort cards"></select>
+  </div>
+  <div class="coll-layout"><div id="collGrid" class="tiles"></div><aside id="cardDetail" class="detail"><p class="hint">Select a card to inspect its eight attributes, level, XP and upgrade options.</p></aside></div>
+</section>
+
+<section class="screen" id="screen-decks">
+  <header class="page-head"><button class="btn small" data-nav="menu">← Menu</button><h2>Deck Builder</h2></header>
+  <div class="filters">
+    <select id="deckSelect" aria-label="Choose deck to edit"></select>
+    <button class="btn" id="newDeckBtn">＋ New Deck</button><button class="btn" id="renameDeckBtn">Rename</button>
+    <button class="btn" id="deleteDeckBtn">Delete</button><button class="btn gold" id="setActiveBtn">Set as battle deck</button>
+    <button class="btn" id="autoFillBtn">Auto-fill to 30</button><button class="btn" id="clearDeckBtn">Clear</button>
+  </div>
+  <p id="deckStatus" role="status"></p>
+  <div class="coll-layout"><div><h3>Cards in deck</h3><ol id="deckList" class="deck-list"></ol></div>
+  <div><h3>Add from collection (click a card)</h3><div id="deckPool" class="tiles"></div></div></div>
+  <p class="hint">Policy: a deck must contain exactly 30 cards; duplicates are allowed only up to the number of copies you own (you start with 1 copy of each of the 50 cards; winning matches can award bonus copies).</p>
+</section>
+
+<section class="screen" id="screen-progress">
+  <header class="page-head"><button class="btn small" data-nav="menu">← Menu</button><h2>Player Progression</h2></header>
+  <div id="progressBody"></div>
+</section>
+
+<section class="screen" id="screen-settings">
+  <header class="page-head"><button class="btn small" data-nav="menu">← Menu</button><h2>Settings</h2></header>
+  <div class="settings">
+    <label>AI Difficulty
+      <select id="setDifficulty"><option value="easy">Easy — casual predictions</option><option value="normal">Normal — basic reasoning</option><option value="hard">Hard — uses revealed-round history</option><option value="expert">Expert — probability-calibrated</option></select></label>
+    <label>Sound volume <input id="setSound" type="range" min="0" max="1" step="0.05"></label>
+    <label class="check"><input id="setFx" type="checkbox"> Enable visual effects (particles / glow)</label>
+    <label class="check"><input id="setMotion" type="checkbox"> Reduced motion</label>
+    <p class="hint">All settings save automatically. Sound is synthesized in-browser — no audio files required. Difficulty changes apply from your next match.</p>
+  </div>
+</section>
+
+<script src="js/rules.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

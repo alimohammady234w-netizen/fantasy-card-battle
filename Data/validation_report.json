@@ -1,0 +1,14 @@
+{
+ "cardCount": 50,
+ "uniqueIds": 50,
+ "rarities": {
+  "Common": 8,
+  "Uncommon": 7,
+  "Rare": 13,
+  "Epic": 11,
+  "Legendary": 7,
+  "Mythic": 4
+ },
+ "problems": [],
+ "status": "PASS"
+}
